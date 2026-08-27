@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const knexConfig = require('./knexfile').development;
+const env = process.env.NODE_ENV || 'development';
+const knexConfig = require('./knexfile')[env] || require('./knexfile').development;
 const Knex = require('knex');
 
 const DATA_DIR = path.join(__dirname, 'data');
