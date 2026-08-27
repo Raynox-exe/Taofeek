@@ -92,7 +92,15 @@ if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, async () => {
     logger.info(`Server started on port ${PORT}`);
     console.log(`T-Shop backend running on http://localhost:${PORT}`);
-    try {
+      const hasUserTable = await knex.schema.hasTable('users');
+      if (hasUserTable) {
+        const hasRoleCol = await knex.schema.hasColumn('users', 'role');
+        if (!hasRoleCol) {
+          await knex.schema.alterTable('users', (t) => {
+            t.string('role', 50).defaultTo('customer');
+          });
+        }
+      }
       const hasTable = await knex.schema.hasTable('vendor_applications');
       if (!hasTable) {
         await knex.schema.createTable('vendor_applications', (table) => {

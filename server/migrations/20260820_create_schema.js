@@ -56,14 +56,15 @@ exports.up = async function(knex) {
 
   if (!await knex.schema.hasTable('users')) {
     await knex.schema.createTable('users', t => {
-    t.increments('id').primary();
-    t.string('name');
-    t.string('email').unique();
-    t.string('password');
-    t.integer('failed_attempts').defaultTo(0);
-    t.bigInteger('locked_until').nullable();
-    t.bigInteger('password_changed_at').nullable();
-    t.bigInteger('created_at');
+      t.increments('id').primary();
+      t.string('name');
+      t.string('email').unique();
+      t.string('password');
+      t.string('role', 50).defaultTo('customer');
+      t.integer('failed_attempts').defaultTo(0);
+      t.bigInteger('locked_until').nullable();
+      t.bigInteger('password_changed_at').nullable();
+      t.bigInteger('created_at');
     });
   }
 
