@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -4101,8 +4101,10 @@ ADMIN ADD / EDIT PRODUCT MODAL
       showToastMsg('Please enter a valid email address.');
     } else if (data && data.error === 'password_too_short') {
       showToastMsg('Password must be at least 4 characters.');
-    } else if (data && (data.error === 'could not register' || (data.detail && (data.detail.includes('Duplicate') || data.detail.includes('UNIQUE'))))) {
+    } else if (data && (data.error === 'email_exists' || (data.detail && (data.detail.includes('Duplicate') || data.detail.includes('UNIQUE'))))) {
       showToastMsg('An account with this email already exists. Please sign in.');
+    } else if (data && data.error) {
+      showToastMsg(data.message || data.detail || 'Could not create account. Please try again.');
     } else if (!data) {
       currentUser = { name: displayName, email, role, shopName: isVendor ? displayName : '' };
       localStorage.setItem('tshop_user', JSON.stringify(currentUser));
@@ -4110,7 +4112,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
       showToastMsg('Welcome to T-Shop, ' + displayName + '!');
       navigate('portal');
     } else {
-      showToastMsg(data.detail || 'Could not create account. Please try again.');
+      showToastMsg('Could not create account. Please try again.');
     }
   };
 

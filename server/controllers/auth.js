@@ -12,10 +12,18 @@ async function register(req, res) {
     const safeEmail = validator.normalizeEmail(String(email));
     if (!safeEmail || !validator.isEmail(safeEmail)) return res.status(400).json({ error: 'invalid_email' });
     if (String(password).length < 4) return res.status(400).json({ error: 'password_too_short' });
+    
+    // Explicitly check for duplicate email before inserting
+    const existing = await knex('users').where({ email: safeEmail }).first();
+    if (existing) {
+      return res.status(409).json({ error: 'email_exists', message: 'An account with this email already exists.' });
+    }
+
     const safeName = sanitizeHtml(String(name || ''));
     const safeRole = role === 'vendor' ? 'vendor' : role === 'admin' ? 'admin' : 'customer';
     const hash = await bcrypt.hash(String(password), Number(process.env.BCRYPT_ROUNDS || 10));
-    const [id] = await knex('users').insert({
+
+    await knex('users').insert({
       name: safeName,
       email: safeEmail,
       password: hash,
@@ -23,7 +31,11 @@ async function register(req, res) {
       password_changed_at: now,
       created_at: now
     });
-    const user = await knex('users').where('id', id).first();
+    
+    const user = await knex('users').where({ email: safeEmail }).first();
+    if (!user) {
+      return res.status(500).json({ error: 'could not retrieve user' });
+    }
 
     // If registered as vendor, record in vendor_applications automatically
     if (safeRole === 'vendor') {
@@ -51,6 +63,9 @@ async function register(req, res) {
     logger.info('auth.register', { user: user.id, email: user.email, role: user.role });
     res.json({ ok: true, user: { id: user.id, name: user.name, email: user.email, role: user.role || safeRole } });
   } catch (e) {
+    if (e && (e.code === 'ER_DUP_ENTRY' || String(e.message).includes('Duplicate') || String(e.message).includes('UNIQUE'))) {
+      return res.status(409).json({ error: 'email_exists', message: 'An account with this email already exists.' });
+    }
     logger.error('auth.register.error', { err: e && (e.message || e) });
     console.error('auth.register.error', e);
     res.status(400).json({ error: 'could not register', detail: String(e && e.message ? e.message : e) });
