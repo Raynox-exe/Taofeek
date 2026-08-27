@@ -92,6 +92,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, async () => {
     logger.info(`Server started on port ${PORT}`);
     console.log(`T-Shop backend running on http://localhost:${PORT}`);
+    try {
       const hasUserTable = await knex.schema.hasTable('users');
       if (hasUserTable) {
         const hasRoleCol = await knex.schema.hasColumn('users', 'role');
