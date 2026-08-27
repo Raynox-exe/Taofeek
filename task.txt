@@ -1,0 +1,28 @@
+🔴 Missing Core Features
+1. Cart sidebar/drawer — Cart buttons exist on both desktop and mobile (#cart-btn-desktop, #cart-btn-mobile) but have no event listeners and no cart UI panel to view, adjust, or remove items
+2. Checkout page — No checkout flow exists after filling the cart; cart leads nowhere
+3. Order confirmation state — No success screen after a mock checkout
+4. Vendor detail/shop page — "View Collection" buttons on all vendor cards do nothing; clicking a vendor has no destination
+
+🟠 Broken Navigation & Dead Links
+5. Cart button click handlers — #cart-btn-desktop and #cart-btn-mobile have zero JavaScript event listeners attached; they are completely inert
+6. Footer links — About Us, Vendor Terms, Privacy Policy, Help Center, and "Sell on T-Shop" all point to #
+7. "Forgot password?" link — Points to # with no flow or modal
+8. Portal dashboard actions — "My Orders", "Wishlist", "My Shop", and "Settings" tiles in the logged-in view are visual-only and do nothing on click
+9. Category cards (Categories page) — Clicking any category card (Electronics, Fashion, etc.) does nothing; no filtered product listing is shown
+10. Sidebar trending/recently added links — All sidebar items on the Categories page are <a> tags with no action
+11. "Load More Vendors" button — Has no handler; clicking does nothing
+
+🟡 Incomplete Features
+12. Search is non-functional — Both the desktop search input and mobile search bar render but do not filter products or navigate anywhere
+13. Deal filter pills don't filter — Pills visually toggle active state but the product cards below are not filtered by category
+14. Vendor filter pills don't filter — Same issue; pills toggle visually but vendor cards are not filtered
+15. Favorites/Wishlist has no view — Products can be heart-toggled but saved items are never persisted or viewable
+16. Cart count resets on reload — Count is tracked in a local variable only; not stored in localStorage
+17. Featured vendor "Visit Shop" button — Navigates to the generic Vendors page rather than the specific Clay & Kin vendor profile
+
+🟢 Enhancement Tasks
+18. Add more products — Only 4 products appear on Home and 4 on Deals; no full product catalog or paginated listing exists
+19. Category-filtered product page — Clicking a category (from home scroll, categories grid, or deals pills) should show a product listing filtered to that category
+20. window.onload triple declaration — Defined 3 times on lines near the bottom; the third definition overwrites the first two (all identical, but should be cleaned up)
+21. Mobile cart count badge styling — Cart badge is always visible showing "0" even when cart is empty; should be hidden when count is zero (desktop version also has this issue initially)
