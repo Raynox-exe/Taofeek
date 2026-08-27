@@ -1,0 +1,11 @@
+﻿{
+  "name": "t-shop-marketplace",
+  "version": "1.0.0",
+  "description": "T-Shop Multi-Vendor Marketplace",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "cd server && npm install && npx knex migrate:latest",
+    "migrate": "cd server && npx knex migrate:latest"
+  }
+}
