@@ -7,7 +7,7 @@
 
 <!-- Social Meta -->
 <meta property="og:title" content="T-Shop — Multi-Vendor Marketplace">
-<meta property="og:description" content="Discover curated collections from independent vendors and boutique creators. Electronics, Fashion, Handmade, Art & more.">
+<meta property="og:description" content="Discover products from verified vendors across Nigeria. Electronics, Fashion, Handmade, Art & more.">
 <meta property="og:url" content="https://www.onspace.ai">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="T-Shop">
@@ -16,7 +16,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="T-Shop — Multi-Vendor Marketplace">
-<meta name="twitter:description" content="Discover curated collections from independent vendors and boutique creators.">
+<meta name="twitter:description" content="Discover products from verified vendors across Nigeria.">
 <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=T-Shop+Multi-Vendor+Marketplace">
 <meta name="twitter:url" content="https://www.onspace.ai">
 
@@ -560,10 +560,10 @@ PAGE CONTAINER
         <div class="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-10 pt-32 lg:pt-0 lg:justify-center lg:h-full">
           <span class="inline-block py-1 px-3 bg-secondary text-on-secondary rounded-full font-label-sm uppercase tracking-widest mb-4 shadow-lg shadow-secondary/20 fade-in-up">New Arrivals & Deals</span>
           <h1 class="font-display-lg text-display-lg text-on-surface mb-3 fade-in-up delay-1 max-w-2xl">
-            Shop from <span class="text-secondary">Independent</span> Creators
+            Shop from <span class="text-secondary">Our Verified</span> Vendors
           </h1>
           <p class="font-body-lg text-body-lg text-on-surface-variant mb-6 max-w-xl fade-in-up delay-2">
-            Curated collections from our trusted network of independent vendors and boutique creators worldwide.
+            Discover products from verified vendors across Nigeria
           </p>
           <div class="flex flex-col sm:flex-row gap-3 w-full max-w-sm fade-in-up delay-3">
             <button onclick="navigate('categories')" class="flex-1 h-12 bg-secondary text-on-secondary rounded-full font-label-md shadow-md hover:shadow-lg hover:scale-105 transition-all active:scale-95 flex items-center justify-center">
@@ -778,7 +778,7 @@ PAGE CONTAINER
             <span class="material-symbols-outlined text-secondary text-[32px]">groups</span>
             <div>
               <h3 class="font-title-lg text-on-surface text-[15px]">2,500+ Vendors</h3>
-              <p class="font-body-md text-sm text-on-surface-variant">Independent creators</p>
+              <p class="font-body-md text-sm text-on-surface-variant">Independent vendors</p>
             </div>
           </div>
         </div>
@@ -1162,7 +1162,7 @@ PAGE CONTAINER
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4">
           <div>
             <h1 class="font-headline-lg text-headline-lg lg:font-display-lg lg:text-display-lg text-on-background mb-2">Browse Vendors</h1>
-            <p class="font-body-lg text-on-surface-variant max-w-2xl">Discover unique goods from our verified community of independent creators.</p>
+            <p class="font-body-lg text-on-surface-variant max-w-2xl">Discover unique goods from our verified community of independent vendors.</p>
           </div>
         </div>
         <div class="flex gap-2 overflow-x-auto pb-3 mb-6 snap-x snap-mandatory">
