@@ -76,6 +76,8 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/webhooks', require('./routes/webhooks'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/services', require('./routes/services'));
+app.use('/api/chats', require('./routes/chats'));
 
 // Fallback error handler
 app.use((err, req, res, next) => {

@@ -476,7 +476,7 @@ DESKTOP TOP NAV
         <button onclick="navigate('home')" class="nav-desktop-link text-on-surface-variant text-label-md hover:text-secondary transition-colors" data-page="home">Home</button>
         <button onclick="navigate('categories')" class="nav-desktop-link text-on-surface-variant text-label-md hover:text-secondary transition-colors" data-page="categories">Categories</button>
         <button onclick="navigate('vendors')" class="nav-desktop-link text-on-surface-variant text-label-md hover:text-secondary transition-colors" data-page="vendors">Vendors</button>
-        <button onclick="navigate('deals')" class="nav-desktop-link text-on-surface-variant text-label-md hover:text-secondary transition-colors" data-page="deals">Deals</button>
+        <button onclick="navigate('services')" class="nav-desktop-link text-on-surface-variant text-label-md hover:text-secondary transition-colors" data-page="services">Services</button>
 
       </div>
     </div>
@@ -632,8 +632,8 @@ PAGE CONTAINER
           <p class="col-span-full py-12 text-center text-on-surface-variant font-body-md">No products in catalog yet.</p>
         </div>
         <div class="mt-6 flex justify-center">
-          <button onclick="navigate('deals')" class="px-6 py-3 rounded-full bg-surface-container text-on-surface font-label-md shadow-sm hover:bg-surface-variant hover:scale-105 transition-all active:scale-95 flex items-center gap-2">
-            See All Deals <span class="material-symbols-outlined text-[18px]">local_offer</span>
+          <button onclick="navigate('services')" class="px-6 py-3 rounded-full bg-surface-container text-on-surface font-label-md shadow-sm hover:bg-surface-variant hover:scale-105 transition-all active:scale-95 flex items-center gap-2">
+            Explore Services <span class="material-symbols-outlined text-[18px]">home_repair_service</span>
           </button>
         </div>
       </section>
@@ -939,51 +939,86 @@ PAGE CONTAINER
   </div>
 
   <!-- ══════════════════════════
-  PAGE: DEALS
+  PAGE: SERVICES (Professional Services & Skilled Artisans)
   ══════════════════════════ -->
-  <div class="page-view" id="page-deals">
+  <div class="page-view" id="page-services">
     <div class="inner-page-content pb-20 lg:pb-0">
 
-      <section class="w-full relative overflow-hidden bg-surface">
-        <div class="w-full h-[500px] bg-cover bg-center absolute top-0 left-0"
-          style="background-image: url('assets/images/hero-deals.jpg')">
+      <!-- Hero Banner -->
+      <section class="w-full relative overflow-hidden bg-surface py-10 sm:py-14 px-6 lg:px-10 border-b border-outline-variant/30">
+        <div class="w-full h-full bg-cover bg-center absolute inset-0 opacity-20"
+          style="background-image: url('assets/images/hero-deals.jpg');">
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/70 to-surface-container-lowest/10"></div>
-        <div class="pt-[340px] pb-8 px-6 lg:px-10 relative z-10 w-full max-w-container-max mx-auto flex flex-col items-center text-center">
-          <span class="inline-block py-1 px-3 bg-secondary text-on-secondary rounded-full font-label-sm uppercase tracking-widest mb-4 shadow-lg shadow-secondary/20">Seasonal Sale</span>
-          <h1 class="font-display-lg text-display-lg text-on-background max-w-2xl">Elevate Your Space.<br><span class="text-secondary">Up to 50% Off.</span></h1>
-          <p class="font-body-lg text-body-lg text-on-surface-variant mt-4 max-w-xl">Curated collections from our top merchants, now at unmissable prices.</p>
+        <div class="relative z-10 w-full max-w-container-max mx-auto flex flex-col items-center text-center">
+          <span class="inline-flex items-center gap-1.5 py-1 px-3.5 bg-secondary text-on-secondary rounded-full font-label-sm text-xs uppercase tracking-widest mb-3 shadow-md shadow-secondary/15">
+            <span class="material-symbols-outlined text-[15px]">verified</span>
+            Skilled Pros & Artisans
+          </span>
+          <h1 class="font-display-lg text-2xl sm:text-3xl lg:text-4xl font-bold text-on-background max-w-3xl leading-tight">
+            Professional Services on Demand
+          </h1>
+          <p class="font-body-md text-xs sm:text-sm text-on-surface-variant mt-2 max-w-2xl leading-relaxed">
+            Where skilled artisans and freelancers render top-notch services. Hire verified Barbers, Fashion Designers, Electricians, Plumbers, Tech Technicians, Makeup Artists, Cleaners & more.
+          </p>
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-3">
+            <button onclick="document.getElementById('services-main-section').scrollIntoView({ behavior: 'smooth' })" 
+              class="px-5 py-2.5 rounded-xl bg-secondary text-on-secondary font-label-md text-xs shadow hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center gap-1.5 active:translate-y-0">
+              <span class="material-symbols-outlined text-[16px]">search</span>
+              Browse Specialists
+            </button>
+            <button onclick="openCreateServiceModal()" 
+              class="px-5 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-on-surface font-label-md text-xs shadow-sm hover:border-secondary hover:text-secondary hover:-translate-y-0.5 transition-all flex items-center gap-1.5 active:translate-y-0">
+              <span class="material-symbols-outlined text-[16px]">add_business</span>
+              List Your Service as a Pro
+            </button>
+          </div>
         </div>
       </section>
 
-      <div class="sticky top-14 lg:top-16 z-40 bg-surface-container-lowest/90 backdrop-blur-xl py-3 px-4 lg:px-10 shadow-sm">
-        <div class="max-w-container-max mx-auto flex items-center justify-between gap-4">
-          <div class="flex items-center gap-2 overflow-x-auto py-1">
-            <button class="deal-pill pill-active shrink-0 px-4 py-2 rounded-full font-label-md text-label-md transition-all hover:scale-105">All Deals</button>
-            <button class="deal-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md transition-colors hover:bg-surface-variant">Electronics</button>
-            <button class="deal-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md transition-colors hover:bg-surface-variant">Fashion</button>
-            <button class="deal-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md transition-colors hover:bg-surface-variant">Home Decor</button>
-            <button class="deal-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md transition-colors hover:bg-surface-variant">Vintage</button>
-            <button class="deal-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md transition-colors hover:bg-surface-variant">Handmade</button>
+      <!-- Filter & Category Sticky Bar -->
+      <div class="sticky top-14 lg:top-16 z-40 bg-surface-container-lowest/95 backdrop-blur-xl py-3 px-4 lg:px-10 shadow-sm border-b border-outline-variant/30">
+        <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+          <!-- Category Pills -->
+          <div class="flex items-center gap-2 overflow-x-auto py-1 w-full md:w-auto no-scrollbar">
+            <button onclick="filterServices('all', this)" class="service-cat-pill pill-active shrink-0 px-4 py-2 rounded-full font-label-md text-xs transition-all">All Services</button>
+            <button onclick="filterServices('Barber & Grooming', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Barber & Grooming</button>
+            <button onclick="filterServices('Fashion & Tailoring', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Fashion & Tailoring</button>
+            <button onclick="filterServices('Electrician & Solar', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Electrician & Solar</button>
+            <button onclick="filterServices('Plumbing & Repair', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Plumbing & Repair</button>
+            <button onclick="filterServices('Beauty & Makeup', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Beauty & Makeup</button>
+            <button onclick="filterServices('Tech & Gadgets', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Tech & Gadgets</button>
+            <button onclick="filterServices('Cleaning & Home Care', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Cleaning & Home Care</button>
+            <button onclick="filterServices('Photography & Events', this)" class="service-cat-pill shrink-0 px-4 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md text-xs transition-colors hover:bg-surface-variant">Photography</button>
+          </div>
+
+          <!-- Search in services -->
+          <div class="relative w-full md:w-72 flex-shrink-0">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+            <input id="services-search-input" type="text" placeholder="Search service, pro or skill..." oninput="handleServicesSearch(this.value)"
+              class="w-full pl-9 pr-4 py-2 bg-surface-container-low border border-outline-variant/60 rounded-xl font-body-md text-xs text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary transition-colors">
           </div>
         </div>
       </div>
 
-      <section class="max-w-container-max mx-auto px-4 lg:px-10 py-8">
-        <div class="flex items-end justify-between mb-6">
+      <!-- Main Grid Section -->
+      <section id="services-main-section" class="max-w-container-max mx-auto px-4 lg:px-10 py-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-3">
           <div>
-            <h2 class="font-headline-lg text-headline-lg text-on-background flex items-center gap-3 flex-wrap">
-              Flash Sales
-              <span class="flex items-center gap-1 bg-error/10 text-error px-2 py-1 rounded-md font-label-sm">
-                <span class="material-symbols-outlined text-[16px] pulse-soft">timer</span>
-                <span id="countdown-display">04:12:39</span>
-              </span>
+            <h2 class="font-headline-lg text-headline-lg text-on-background flex items-center gap-3">
+              Specialists & Artisans
+              <span id="services-count-badge" class="text-xs font-label-sm px-2.5 py-1 rounded-full bg-secondary/10 text-secondary">8 pros</span>
             </h2>
-            <p class="font-body-md text-on-surface-variant mt-1">Incredible prices, gone in a flash.</p>
+            <p class="font-body-md text-on-surface-variant text-sm mt-0.5">Hire vetted professionals directly or message them instantly for inquiries and quotes.</p>
           </div>
+          <button onclick="openCreateServiceModal()" class="self-start sm:self-auto px-4 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow-sm hover:shadow hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">add</span>
+            List a Service
+          </button>
         </div>
-        <div id="deals-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <p class="col-span-full py-12 text-center text-on-surface-variant font-body-md">No active deals or discounts right now.</p>
+
+        <!-- Services List Container -->
+        <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <!-- Rendered dynamically -->
         </div>
       </section>
     </div>
@@ -1215,6 +1250,10 @@ PAGE CONTAINER
             <!-- Tab navigation -->
             <div class="flex border-t border-outline-variant">
               <button id="ptab-overview" onclick="switchPortalTab('overview')" class="portal-tab flex-1 py-3 font-label-md text-label-md text-secondary border-b-2 border-secondary transition-colors">Overview</button>
+              <button id="ptab-chats" onclick="switchPortalTab('chats')" class="portal-tab flex-1 py-3 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent transition-colors hover:text-secondary flex items-center justify-center gap-1.5">
+                <span>Chats</span>
+                <span id="portal-chat-unread-badge" class="hidden px-2 py-0.5 text-[10px] font-bold bg-error text-on-error rounded-full leading-none">0</span>
+              </button>
               <button id="ptab-orders" onclick="switchPortalTab('orders')" class="portal-tab flex-1 py-3 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent transition-colors hover:text-secondary">My Orders</button>
               <button id="ptab-settings" onclick="switchPortalTab('settings')" class="portal-tab flex-1 py-3 font-label-md text-label-md text-on-surface-variant border-b-2 border-transparent transition-colors hover:text-secondary">Settings</button>
             </div>
@@ -1225,10 +1264,17 @@ PAGE CONTAINER
             <!-- Quick actions grid -->
             <div class="bg-surface-container-lowest rounded-2xl shadow-sm p-5">
               <h3 class="font-title-lg text-on-surface mb-4">Quick Access</h3>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
                 <button onclick="switchPortalTab('orders')" class="bg-surface-container rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-surface-container-high transition-colors group">
                   <span class="material-symbols-outlined text-secondary text-[28px] group-hover:scale-110 transition-transform">shopping_bag</span>
                   <span class="font-label-sm text-on-surface-variant">My Orders</span>
+                </button>
+                <button onclick="switchPortalTab('chats')" class="bg-surface-container rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-surface-container-high transition-colors group relative">
+                  <div class="relative">
+                    <span class="material-symbols-outlined text-secondary text-[28px] group-hover:scale-110 transition-transform">chat</span>
+                    <span id="portal-quick-chat-badge" class="hidden absolute -top-1.5 -right-2 px-1.5 py-0.5 text-[9px] font-bold bg-error text-on-error rounded-full">0</span>
+                  </div>
+                  <span class="font-label-sm text-on-surface-variant">Chats</span>
                 </button>
                 <button onclick="openWishlistModal()" class="bg-surface-container rounded-xl p-4 flex flex-col items-center gap-2 hover:bg-surface-container-high transition-colors group">
                   <span class="material-symbols-outlined text-secondary text-[28px] group-hover:scale-110 transition-transform">favorite</span>
@@ -1286,6 +1332,122 @@ PAGE CONTAINER
                   Apply Now
                   <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                 </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── TAB: CHATS (Vendor & Customer Messaging Hub) ── -->
+          <div id="ptab-content-chats" class="hidden flex-col gap-5">
+            <div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30 flex flex-col h-[650px]">
+              
+              <!-- Chat Container Grid -->
+              <div class="flex-1 flex flex-col md:flex-row overflow-hidden">
+                
+                <!-- Left Sidebar: Conversations List -->
+                <div id="chat-sidebar-panel" class="w-full md:w-80 lg:w-96 border-r border-outline-variant/40 flex flex-col bg-surface-container-lowest flex-shrink-0">
+                  <!-- Sidebar Header -->
+                  <div class="p-4 border-b border-outline-variant/30 flex flex-col gap-3 bg-surface-container/30">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-[22px]">forum</span>
+                        <h3 class="font-title-lg text-on-surface font-semibold text-base">Messages</h3>
+                      </div>
+                      <span id="chat-total-threads-badge" class="font-label-sm text-xs text-on-surface-variant bg-surface-container px-2.5 py-0.5 rounded-full">0 conversations</span>
+                    </div>
+                    <!-- Search conversation -->
+                    <div class="relative">
+                      <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+                      <input id="chat-search-input" type="text" placeholder="Search conversations..." oninput="handleChatSearch(this.value)"
+                        class="w-full pl-9 pr-3 py-2 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary transition-colors">
+                    </div>
+                  </div>
+
+                  <!-- Conversations Scroll List -->
+                  <div id="chat-conversations-list" class="flex-1 overflow-y-auto divide-y divide-outline-variant/20">
+                    <!-- Dynamic conversations render here -->
+                    <div class="p-8 text-center text-on-surface-variant flex flex-col items-center gap-2">
+                      <span class="material-symbols-outlined text-4xl text-outline-variant">chat_bubble_outline</span>
+                      <p class="font-body-md text-xs">No conversations yet</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Right Panel: Active Chat Thread -->
+                <div id="chat-main-panel" class="hidden md:flex flex-1 flex-col bg-surface-container-lowest overflow-hidden">
+                  
+                  <!-- Active Chat Header -->
+                  <div id="chat-thread-header" class="px-5 py-3.5 border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-lowest">
+                    <div class="flex items-center gap-3">
+                      <!-- Mobile Back button -->
+                      <button onclick="mobileBackToChatList()" class="md:hidden w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                      </button>
+                      <!-- Participant Avatar -->
+                      <div id="chat-recipient-avatar" class="w-10 h-10 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center font-bold text-secondary text-sm flex-shrink-0">
+                        ?
+                      </div>
+                      <div>
+                        <div class="flex items-center gap-2">
+                          <h4 id="chat-recipient-name" class="font-label-md text-on-surface font-semibold text-sm">Select a conversation</h4>
+                          <span id="chat-recipient-role-badge" class="px-2 py-0.5 rounded-full text-[10px] font-label-sm bg-surface-container text-on-surface-variant font-medium">--</span>
+                        </div>
+                        <p id="chat-recipient-status" class="font-body-md text-[11px] text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+                          <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Online
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- Chat Actions -->
+                    <div class="flex items-center gap-1">
+                      <button onclick="clearCurrentChatHistory()" title="Clear conversation" class="w-8 h-8 rounded-full hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-error transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">delete_outline</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Product Context Banner (Optional when inquiring about item) -->
+                  <div id="chat-product-context-banner" class="hidden px-5 py-2.5 bg-secondary/5 border-b border-secondary/15 flex items-center justify-between gap-3">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <img id="chat-context-img" src="" alt="Product" class="w-10 h-10 rounded-lg object-cover border border-outline-variant/40 flex-shrink-0">
+                      <div class="min-w-0">
+                        <p class="font-label-sm text-[10px] text-secondary font-semibold uppercase tracking-wider">Product Inquiry</p>
+                        <p id="chat-context-name" class="font-label-md text-xs text-on-surface truncate font-medium">Product Name</p>
+                        <p id="chat-context-price" class="font-label-md text-xs text-secondary font-bold">₦0.00</p>
+                      </div>
+                    </div>
+                    <button id="chat-context-view-btn" onclick="openChatProductDetails()" class="px-3 py-1.5 bg-secondary text-on-secondary rounded-lg font-label-sm text-xs hover:shadow transition-all whitespace-nowrap">
+                      View Item
+                    </button>
+                  </div>
+
+                  <!-- Messages Scroll Area -->
+                  <div id="chat-messages-container" class="flex-1 p-5 overflow-y-auto flex flex-col gap-3.5 bg-surface-container/10">
+                    <div class="flex flex-col items-center justify-center h-full text-on-surface-variant text-center gap-2">
+                      <span class="material-symbols-outlined text-4xl text-outline-variant">chat</span>
+                      <p class="font-body-md text-xs">Select a conversation on the left to start chatting.</p>
+                    </div>
+                  </div>
+
+                  <!-- Quick Reply Chips -->
+                  <div id="chat-quick-replies" class="px-4 py-2 border-t border-outline-variant/20 bg-surface-container/20 flex items-center gap-2 overflow-x-auto no-scrollbar">
+                    <!-- Dynamic quick chips -->
+                  </div>
+
+                  <!-- Message Composer Input Bar -->
+                  <div class="p-3.5 border-t border-outline-variant/30 bg-surface-container-lowest flex items-center gap-2.5">
+                    <input id="chat-message-input" type="text" placeholder="Write a reply..."
+                      onkeydown="if(event.key === 'Enter') sendPortalChatMessage()"
+                      class="flex-1 px-4 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-secondary transition-all">
+                    
+                    <button onclick="sendPortalChatMessage()" id="chat-send-btn"
+                      class="px-5 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow hover:shadow-md hover:-translate-y-0.5 transition-all flex items-center gap-1.5 active:translate-y-0">
+                      <span>Send</span>
+                      <span class="material-symbols-outlined text-[16px]">send</span>
+                    </button>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </div>
@@ -2217,9 +2379,9 @@ MOBILE BOTTOM NAV
       <span class="material-symbols-outlined mat-icon text-[24px]">grid_view</span>
       <span class="font-label-sm text-[11px]">Categories</span>
     </button>
-    <button onclick="navigate('deals')" class="nav-item flex flex-col items-center justify-center w-full h-full gap-1 text-on-surface-variant" data-page="deals">
-      <span class="material-symbols-outlined mat-icon text-[24px]">sell</span>
-      <span class="font-label-sm text-[11px]">Deals</span>
+    <button onclick="navigate('services')" class="nav-item flex flex-col items-center justify-center w-full h-full gap-1 text-on-surface-variant" data-page="services">
+      <span class="material-symbols-outlined text-[24px]">home_repair_service</span>
+      <span class="font-label-sm text-[11px]">Services</span>
     </button>
     <button onclick="navigate('vendors')" class="nav-item flex flex-col items-center justify-center w-full h-full gap-1 text-on-surface-variant" data-page="vendors">
       <span class="material-symbols-outlined mat-icon text-[24px]">groups</span>
@@ -2277,9 +2439,16 @@ PRODUCT DETAIL MODAL
         <p id="modal-description" class="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-5"></p>
 
         <!-- Price -->
-        <div class="flex items-baseline gap-3 mb-5">
+        <div class="flex items-baseline gap-3 mb-2">
           <span id="modal-price" class="font-display-lg text-[36px] leading-none text-secondary font-bold"></span>
           <span id="modal-original-price" class="font-body-lg text-on-surface-variant line-through"></span>
+        </div>
+        <!-- Stock status indicator badge -->
+        <div id="modal-stock-container" class="flex items-center gap-2 mb-4">
+          <div id="modal-stock-badge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-xs bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="modal-stock-text" class="font-semibold">In Stock: 15 items left</span>
+          </div>
         </div>
 
         <!-- Variants / Colors -->
@@ -2319,6 +2488,12 @@ PRODUCT DETAIL MODAL
             <span class="material-symbols-outlined mat-icon text-[22px]">favorite</span>
           </button>
         </div>
+
+        <!-- Chat / Message Vendor Button -->
+        <button id="modal-chat-vendor-btn" onclick="chatWithModalVendor()" class="w-full mt-3 h-11 border border-secondary/60 text-secondary bg-secondary/5 hover:bg-secondary/15 rounded-xl font-label-md text-xs transition-colors flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">chat</span>
+          <span>Message Vendor about this item</span>
+        </button>
 
         <!-- Shipping info -->
         <div class="mt-4 flex items-center gap-2 text-on-surface-variant">
@@ -2526,16 +2701,33 @@ VENDOR DASHBOARD MODAL
 
       <!-- Inventory Section -->
       <div class="bg-surface-container/40 rounded-xl p-5 border border-outline-variant/40">
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
           <div>
-            <h3 class="font-title-lg text-on-surface text-base">Your Product Listings</h3>
-            <p class="font-body-md text-xs text-on-surface-variant">Manage your stock, prices, and status</p>
+            <div class="flex items-center gap-2 border-b border-outline-variant/40 pb-1">
+              <button id="vdash-tab-products-btn" onclick="switchVendorDashListingsTab('products')" class="font-title-lg text-sm font-bold text-secondary border-b-2 border-secondary pb-1 transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">inventory_2</span>
+                <span>Products Inventory</span>
+              </button>
+              <span class="text-outline-variant">|</span>
+              <button id="vdash-tab-services-btn" onclick="switchVendorDashListingsTab('services')" class="font-title-lg text-sm font-medium text-on-surface-variant hover:text-secondary pb-1 transition-all flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">handyman</span>
+                <span>Services Rendered</span>
+              </button>
+            </div>
+            <p id="vdash-listings-subtitle" class="font-body-md text-xs text-on-surface-variant mt-1.5">Manage your stock, prices, and status</p>
           </div>
-          <button onclick="openAddProductModal()" class="px-4 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all">
-            <span class="material-symbols-outlined text-[16px]">add</span> Add Product
-          </button>
+          <div class="flex items-center gap-2 self-start sm:self-auto flex-wrap">
+            <button onclick="openCreateServiceModal()" class="px-3.5 py-2 bg-secondary/10 hover:bg-secondary text-secondary hover:text-on-secondary border border-secondary/30 rounded-xl font-label-md text-xs flex items-center gap-1.5 shadow-sm transition-all whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]">add_business</span> Add Service
+            </button>
+            <button onclick="openAddProductModal()" class="px-3.5 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all whitespace-nowrap">
+              <span class="material-symbols-outlined text-[16px]">add</span> Add Product
+            </button>
+          </div>
         </div>
-        <div class="overflow-x-auto">
+
+        <!-- Products Table View -->
+        <div id="vdash-products-table-container" class="overflow-x-auto">
           <table class="w-full text-left text-sm">
             <thead class="text-xs text-on-surface-variant uppercase bg-surface-container/60">
               <tr>
@@ -2548,6 +2740,25 @@ VENDOR DASHBOARD MODAL
             </thead>
             <tbody id="vendor-inventory-body" class="divide-y divide-outline-variant/30 text-xs font-body-md">
               <tr><td colspan="5" class="py-8 text-center text-on-surface-variant">No products listed yet. Click "Add Product" to get started.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Services Table View -->
+        <div id="vdash-services-table-container" class="hidden overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="text-xs text-on-surface-variant uppercase bg-surface-container/60">
+              <tr>
+                <th class="px-3 py-2 rounded-l-lg">Service Title</th>
+                <th class="px-3 py-2">Category</th>
+                <th class="px-3 py-2">Kind of Service</th>
+                <th class="px-3 py-2">Price</th>
+                <th class="px-3 py-2">Location</th>
+                <th class="px-3 py-2 rounded-r-lg text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="vendor-services-body" class="divide-y divide-outline-variant/30 text-xs font-body-md">
+              <tr><td colspan="6" class="py-8 text-center text-on-surface-variant">No services listed yet. Click "Add Service" to start offering your services.</td></tr>
             </tbody>
           </table>
         </div>
@@ -2791,7 +3002,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           </select>
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-3">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div>
           <label class="block font-label-md text-xs text-on-surface mb-1" for="aprod-price">Price (₦) *</label>
           <input id="aprod-price" type="number" step="0.01" required placeholder="49.99" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
@@ -2803,6 +3014,10 @@ ADMIN ADD / EDIT PRODUCT MODAL
         <div>
           <label class="block font-label-md text-xs text-on-surface mb-1" for="aprod-discount">Discount (%)</label>
           <input id="aprod-discount" type="number" placeholder="20" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+        </div>
+        <div>
+          <label class="block font-label-md text-xs text-on-surface mb-1 font-semibold text-secondary" for="aprod-stock">Quantity (Stock) *</label>
+          <input id="aprod-stock" type="number" min="0" step="1" required value="20" placeholder="20" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-secondary/50 rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary font-bold">
         </div>
       </div>
       <!-- Image Upload Section -->
@@ -2864,6 +3079,179 @@ ADMIN ADD / EDIT PRODUCT MODAL
   </div>
 </div>
 
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SERVICE DETAILS MODAL                                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div id="service-modal-overlay" class="modal-overlay fixed inset-0 z-[600] bg-on-surface/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-end md:items-center justify-center p-0 md:p-6" onclick="handleServiceModalOverlayClick(event)">
+  <div id="service-modal-sheet" class="bg-surface-container-lowest w-full md:max-w-3xl rounded-t-[28px] md:rounded-[24px] max-h-[90vh] overflow-y-auto shadow-2xl relative border border-outline-variant/40">
+    <button onclick="closeServiceModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface z-10">
+      <span class="material-symbols-outlined text-[18px]">close</span>
+    </button>
+    <div class="flex flex-col md:flex-row">
+      <div class="w-full md:w-1/2 aspect-[4/3] md:aspect-auto bg-surface-container-low relative">
+        <img id="smodal-image" src="" alt="" class="w-full h-full object-cover">
+        <span id="smodal-category-badge" class="absolute top-4 left-4 px-3 py-1 rounded-full font-label-sm text-xs bg-secondary text-on-secondary shadow-md font-semibold">Category</span>
+      </div>
+      <div class="p-6 md:p-8 flex-1 flex flex-col">
+        <div class="flex items-center gap-2 mb-2">
+          <span id="smodal-provider" class="font-label-sm text-secondary font-semibold uppercase tracking-wider text-xs">Provider</span>
+          <span class="text-outline-variant">·</span>
+          <span id="smodal-location" class="font-label-sm text-on-surface-variant text-xs flex items-center gap-0.5">
+            <span class="material-symbols-outlined text-[14px]">location_on</span>
+            <span>Location</span>
+          </span>
+        </div>
+        <h2 id="smodal-title" class="font-headline-md text-xl md:text-2xl font-bold text-on-surface mb-2 leading-tight">Service Title</h2>
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-amber-500 flex items-center text-xs font-bold">★ <span id="smodal-rating" class="ml-1 text-on-surface">4.9</span></span>
+          <span class="text-outline-variant">·</span>
+          <span class="font-label-sm text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full text-[11px] font-semibold">Verified Pro</span>
+        </div>
+        <p id="smodal-desc" class="font-body-md text-xs md:text-sm text-on-surface-variant leading-relaxed mb-6"></p>
+        
+        <div class="mt-auto pt-4 border-t border-outline-variant/30 flex flex-col gap-3">
+          <div class="flex items-baseline justify-between">
+            <span class="font-label-md text-xs text-on-surface-variant">Service Rate</span>
+            <span id="smodal-price" class="font-title-lg text-xl font-bold text-secondary">From ₦0.00</span>
+          </div>
+          <button id="smodal-chat-btn" onclick="chatWithActiveServicePro()" class="w-full py-3 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow hover:shadow-md transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">chat</span>
+            <span>Message & Book Provider</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CREATE / LIST SERVICE MODAL                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div id="service-create-modal-overlay" class="modal-overlay fixed inset-0 z-[600] bg-on-surface/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4" onclick="handleServiceCreateModalOverlayClick(event)">
+  <div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl p-6 shadow-2xl relative border border-outline-variant/40 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between pb-4 mb-4 border-b border-outline-variant/30">
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+          <span class="material-symbols-outlined text-[22px]">handyman</span>
+        </div>
+        <div>
+          <h3 id="aserv-modal-title" class="font-title-lg text-base font-semibold text-on-surface">List Your Service</h3>
+          <p class="font-body-md text-xs text-on-surface-variant">Render your skill and connect with customers</p>
+        </div>
+      </div>
+      <button onclick="closeCreateServiceModal()" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    </div>
+
+    <form onsubmit="saveNewService(event)" class="flex flex-col gap-4">
+      <input id="aserv-id" type="hidden" value="">
+
+      <div>
+        <label class="block font-label-md text-xs text-on-surface mb-1" for="aserv-title">Service Title *</label>
+        <input id="aserv-title" type="text" required placeholder="e.g. Cyber Cafe & Printing Hub" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="block font-label-md text-xs text-on-surface mb-1" for="aserv-provider">Provider / Brand Name *</label>
+          <input id="aserv-provider" type="text" required placeholder="e.g. Dave Studio" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+        </div>
+        <div>
+          <label class="block font-label-md text-xs text-on-surface mb-1" for="aserv-category">Category *</label>
+          <select id="aserv-category" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+            <option value="Barber & Grooming">Barber & Grooming</option>
+            <option value="Fashion & Tailoring">Fashion & Tailoring</option>
+            <option value="Electrician & Solar">Electrician & Solar</option>
+            <option value="Plumbing & Repair">Plumbing & Repair</option>
+            <option value="Beauty & Makeup">Beauty & Makeup</option>
+            <option value="Tech & Gadgets">Tech & Gadgets</option>
+            <option value="Cleaning & Home Care">Cleaning & Home Care</option>
+            <option value="Photography & Events">Photography & Events</option>
+            <option value="General Artisan">General Artisan / Handyman</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 2 Fields: Kind of Service and Price -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div>
+          <label class="block font-label-md text-xs text-on-surface mb-1 font-semibold text-secondary" for="aserv-kind">Kind of Service *</label>
+          <input id="aserv-kind" type="text" required placeholder="e.g. Graphic Design, Agbada Sewing, Haircut" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-secondary/50 rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary font-medium">
+        </div>
+        <div>
+          <label class="block font-label-md text-xs text-on-surface mb-1 font-semibold text-secondary" for="aserv-price">Price (₦) *</label>
+          <input id="aserv-price" type="number" step="0.01" required placeholder="5000" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-secondary/50 rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary font-bold">
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-label-md text-xs text-on-surface mb-1" for="aserv-location">Location / Coverage Area *</label>
+        <input id="aserv-location" type="text" required placeholder="e.g. Lekki, Lagos or Remote / Home Service" class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+      </div>
+
+      <!-- Image Upload Section -->
+      <div>
+        <label class="block font-label-md text-xs text-on-surface mb-1">Service / Portfolio Image</label>
+        <!-- Tab switcher -->
+        <div class="flex bg-surface-container p-0.5 rounded-xl mb-2 gap-1">
+          <button type="button" id="serv-img-tab-url" onclick="switchServiceImageTab('url')"
+            class="flex-1 py-1.5 rounded-lg font-label-md text-[11px] bg-surface-container-lowest shadow-sm text-on-surface transition-all flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">link</span> URL
+          </button>
+          <button type="button" id="serv-img-tab-file" onclick="switchServiceImageTab('file')"
+            class="flex-1 py-1.5 rounded-lg font-label-md text-[11px] text-on-surface-variant transition-all flex items-center justify-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">upload_file</span> Upload from Device
+          </button>
+        </div>
+
+        <!-- URL input -->
+        <div id="serv-img-section-url">
+          <input id="aserv-image" type="url" placeholder="assets/images/cat-beauty.jpg" 
+            oninput="updateServiceImagePreview(this.value)"
+            class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary">
+        </div>
+
+        <!-- File upload input -->
+        <div id="serv-img-section-file" class="hidden">
+          <label for="aserv-image-file"
+            class="flex flex-col items-center justify-center w-full py-4 border-2 border-dashed border-outline-variant rounded-xl cursor-pointer bg-surface-container-low hover:bg-surface-container transition-colors group">
+            <span class="material-symbols-outlined text-[28px] text-on-surface-variant group-hover:text-secondary transition-colors mb-1">add_photo_alternate</span>
+            <span class="font-body-md text-xs text-on-surface-variant font-medium">Click to browse or drag & drop</span>
+            <span class="font-body-md text-[10px] text-on-surface-variant/60 mt-0.5">JPG, PNG, WEBP up to 5MB</span>
+          </label>
+          <input id="aserv-image-file" type="file" accept="image/*" class="hidden" onchange="handleServiceImageFileUpload(event)">
+        </div>
+
+        <!-- Preview -->
+        <div id="aserv-image-preview-wrap" class="hidden mt-2 flex items-center gap-3 p-2 bg-surface-container rounded-xl">
+          <img id="aserv-image-preview" src="" alt="Preview" class="w-14 h-14 rounded-lg object-cover flex-shrink-0 border border-outline-variant">
+          <div class="flex-1 min-w-0">
+            <p class="font-label-md text-[11px] text-on-surface font-semibold">Preview</p>
+            <p id="aserv-image-preview-label" class="font-body-md text-[10px] text-on-surface-variant truncate">Image ready</p>
+          </div>
+          <button type="button" onclick="clearServiceImageSelection()" class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-error transition-colors flex-shrink-0">
+            <span class="material-symbols-outlined text-[14px]">close</span>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <label class="block font-label-md text-xs text-on-surface mb-1" for="aserv-desc">Service Description & Specialization</label>
+        <textarea id="aserv-desc" rows="3" placeholder="Describe your experience, what is included, home service options..." class="w-full px-3.5 py-2.5 bg-surface-container-low border border-outline-variant rounded-xl font-body-md text-xs text-on-surface focus:outline-none focus:border-secondary"></textarea>
+      </div>
+
+      <div class="pt-2 flex gap-3">
+        <button type="button" onclick="closeCreateServiceModal()" class="flex-1 py-2.5 border border-outline-variant text-on-surface rounded-xl font-label-md text-xs hover:bg-surface-container transition-all">Cancel</button>
+        <button type="submit" id="aserv-submit-btn" class="flex-1 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">save</span> Save Service
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- Cart Toast -->
 <div id="cart-toast" class="fixed bottom-24 lg:bottom-6 right-4 lg:right-6 bg-on-surface text-surface px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 font-label-md z-[100] transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-none">
   <span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
@@ -2886,6 +3274,14 @@ ADMIN ADD / EDIT PRODUCT MODAL
   let checkoutStep = 1;
 
   // ── All searchable products ────────────────────
+  
+  // ── Price Formatting Helper (Thousands/Millions with commas) ───────────
+  function formatNaira(amount) {
+    const num = Number(amount) || 0;
+    return '₦' + num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+  window.formatNaira = formatNaira;
+
   let ALL_PRODUCTS = []; // populated from API
 
   const SHOP_COLORS = [
@@ -3080,7 +3476,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
       const ordEl = document.getElementById('admin-stat-orders');
       const prodEl = document.getElementById('admin-stat-products');
       const userEl = document.getElementById('admin-stat-users');
-      if (revEl) revEl.textContent = '₦' + Number(data.stats.totalRevenue).toFixed(2);
+      if (revEl) revEl.textContent = formatNaira(data.stats.totalRevenue);
       if (ordEl) ordEl.textContent = data.stats.totalOrders;
       if (prodEl) prodEl.textContent = data.stats.totalProducts;
       if (userEl) userEl.textContent = data.stats.totalUsers;
@@ -3103,7 +3499,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
             <tr class="hover:bg-surface-container/50 transition-colors">
               <td class="py-3 font-semibold text-secondary">#${o.order_id || o.id}</td>
               <td class="py-3 text-on-surface">${o.customer || 'Guest'}</td>
-              <td class="py-3 font-bold text-on-surface">₦${Number(o.total || 0).toFixed(2)}</td>
+              <td class="py-3 font-bold text-on-surface">${formatNaira(o.total || 0)}</td>
               <td class="py-3">
                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600">
                   Paid
@@ -3119,7 +3515,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
   // ── Helper to render a unified product card ────
   function renderStorefrontProductCard(p) {
     const origPriceHtml = (p.originalPrice && Number(p.originalPrice) > Number(p.price))
-      ? `<span class="text-[11px] text-on-surface-variant line-through">₦${Number(p.originalPrice).toFixed(2)}</span>`
+      ? `<span class="text-[11px] text-on-surface-variant line-through">${formatNaira(p.originalPrice)}</span>`
       : '';
     const discountBadge = (p.discount && Number(p.discount) > 0)
       ? `<div class="absolute top-2 left-2 bg-secondary text-on-secondary px-2 py-0.5 rounded-full font-label-sm text-[10px] font-bold shadow-sm z-10">-${p.discount}%</div>`
@@ -3127,6 +3523,12 @@ ADMIN ADD / EDIT PRODUCT MODAL
     const isFav = wishlist.includes(p.id);
     const pStr = JSON.stringify(p).replace(/"/g, '&quot;');
 
+    const pStock = (p.stock !== undefined && p.stock !== null) ? Number(p.stock) : 15;
+    const stockIndicator = pStock <= 0
+      ? '<span class="font-label-sm text-[10px] text-error font-bold flex-shrink-0">Out of stock</span>'
+      : pStock <= 5
+      ? `<span class="font-label-sm text-[10px] text-amber-600 font-bold flex-shrink-0">Only ${pStock} left</span>`
+      : `<span class="font-label-sm text-[10px] text-emerald-600 font-semibold flex-shrink-0">${pStock} in stock</span>`;
     return `
       <article data-product-id="${p.id}" class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col group hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative cursor-pointer" onclick="openProductModal(${pStr})">
         ${discountBadge}
@@ -3142,7 +3544,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <div class="flex items-end justify-between mt-auto pt-1">
             <div>
               ${origPriceHtml}
-              <span class="font-title-lg text-secondary block font-bold text-sm md:text-base">₦${Number(p.price).toFixed(2)}</span>
+              <span class="font-title-lg text-secondary block font-bold text-sm md:text-base">${formatNaira(p.price)}</span>
             </div>
             <button class="add-to-cart w-8 h-8 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-secondary transition-colors shadow-sm" onclick="event.stopPropagation(); addToCartDirect(${p.id})">
               <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
@@ -3189,7 +3591,11 @@ ADMIN ADD / EDIT PRODUCT MODAL
         });
 
         // Merge with ALL_PRODUCTS
-        ALL_PRODUCTS = unified;
+        ALL_PRODUCTS = unified.map((p, idx) => ({
+      ...p,
+      stock: p.stock !== undefined ? p.stock : (10 + ((idx * 7) % 25))
+    }));
+    initChatSystem();
       }
     } catch (err) {
       console.warn('Using existing catalog:', err);
@@ -3397,7 +3803,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <td class="py-3 px-4">
             <span class="inline-block px-2 py-0.5 rounded-md text-[10px] font-semibold bg-surface-container text-on-surface-variant border border-outline-variant/60">${cat}</span>
           </td>
-          <td class="py-3 px-4 font-bold text-secondary text-xs">₦${Number(p.price).toFixed(2)}</td>
+          <td class="py-3 px-4 font-bold text-secondary text-xs">${formatNaira(p.price)}</td>
           <td class="py-3 px-4 text-right">
             <div class="flex items-center justify-end gap-1.5">
               <button onclick="openAdminProductModal(${p.id})" title="Edit Product" class="p-1.5 rounded-lg text-on-surface-variant hover:text-secondary hover:bg-surface-container transition-all">
@@ -3442,6 +3848,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
     const discInput = document.getElementById('aprod-discount');
     const imgInput = document.getElementById('aprod-image');
     const descInput = document.getElementById('aprod-desc');
+    const stockInput = document.getElementById('aprod-stock');
 
     if (productId) {
       const prod = (adminProductsCache && adminProductsCache.find(p => String(p.id) === String(productId))) || ALL_PRODUCTS.find(p => String(p.id) === String(productId));
@@ -3600,31 +4007,50 @@ ADMIN ADD / EDIT PRODUCT MODAL
       return pVendor === vendorName || pVendor.includes(vendorName) || vendorName.includes(pVendor);
     });
 
+    const vendorServices = ALL_SERVICES.filter(s => {
+      if (!vendorName) return true;
+      const sProvider = (s.provider || '').toLowerCase();
+      return sProvider === vendorName || sProvider.includes(vendorName) || vendorName.includes(sProvider);
+    });
     if (statListings) {
-      statListings.textContent = vendorProducts.length;
+      statListings.textContent = vendorProducts.length + vendorServices.length;
     }
+    renderVendorServices();
 
     if (vendorProducts.length === 0) {
       tbody.innerHTML = '<tr><td colspan="5" class="py-8 text-center text-on-surface-variant">No products listed yet. Click "Add Product" to get started.</td></tr>';
       return;
     }
 
-    tbody.innerHTML = vendorProducts.map(p => `
+    tbody.innerHTML = vendorProducts.map(p => {
+      const pStock = (p.stock !== undefined && p.stock !== null) ? Number(p.stock) : 15;
+      const stockBadge = pStock <= 0
+        ? '<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-red-100 text-red-700"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Out of stock</span>'
+        : pStock <= 5
+        ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>${pStock} left (Low)</span>`
+        : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>${pStock} in stock</span>`;
+
+      return `
       <tr class="hover:bg-surface-container/30 transition-colors">
-        <td class="px-3 py-3 font-semibold text-on-surface flex items-center gap-2">
-          <div class="w-8 h-8 rounded bg-surface-container overflow-hidden flex-shrink-0">
-            <img src="${p.image || 'assets/images/product-watch-md.jpg'}" class="w-full h-full object-cover" alt="${p.name}">
-          </div>
-          <span class="truncate max-w-[140px] sm:max-w-none">${p.name}</span>
+        <td class="px-3 py-2.5 font-label-md text-on-surface flex items-center gap-2">
+          <img src="${p.image || 'assets/images/vendor-banner-default.jpg'}" alt="${p.name}" class="w-8 h-8 rounded-lg object-cover bg-surface-container flex-shrink-0" onerror="this.src='assets/images/vendor-banner-default.jpg'">
+          <span class="truncate max-w-[120px] sm:max-w-[160px]">${p.name}</span>
         </td>
-        <td class="px-3 py-3 text-on-surface-variant">${p.category || 'General'}</td>
-        <td class="px-3 py-3 font-semibold text-secondary">₦${Number(p.price).toFixed(2)}</td>
-        <td class="px-3 py-3"><span class="px-2 py-0.5 rounded-full text-[10px] bg-[#e8f5e9] text-[#2e7d32] font-semibold">Active</span></td>
-        <td class="px-3 py-3 text-right">
-          <button onclick="openAddProductModal(${p.id})" class="text-secondary hover:underline font-semibold text-xs">Edit</button>
+        <td class="px-3 py-2.5 text-on-surface-variant">${p.category || 'General'}</td>
+        <td class="px-3 py-2.5 font-semibold text-secondary">${formatNaira(p.price)}</td>
+        <td class="px-3 py-2.5">${stockBadge}</td>
+        <td class="px-3 py-2.5 text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="openAdminProductModal(${p.id})" class="p-1 text-on-surface-variant hover:text-secondary rounded transition-colors" title="Edit">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="deleteVendorProduct(${p.id})" class="p-1 text-on-surface-variant hover:text-error rounded transition-colors" title="Delete">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
         </td>
       </tr>
-    `).join('');
+    `; }).join('');
   }
   window.renderVendorInventory = renderVendorInventory;
 
@@ -3641,6 +4067,8 @@ ADMIN ADD / EDIT PRODUCT MODAL
     const imageUrl = document.getElementById('aprod-image')?.value.trim();
     const image = window._selectedImageData || imageUrl || '';
     const description = document.getElementById('aprod-desc')?.value.trim();
+    const stockVal = document.getElementById('aprod-stock')?.value;
+    const stock = Math.max(0, parseInt(stockVal, 10) || 0);
 
     if (!name || !price) {
       showToastMsg('Please enter product name and price.');
@@ -3741,7 +4169,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <td class="py-3 px-4 font-semibold text-on-surface text-xs">${o.customer || 'Guest User'}</td>
           <td class="py-3 px-4 text-on-surface-variant text-xs">${o.email || 'N/A'}</td>
           <td class="py-3 px-4 text-on-surface-variant text-xs max-w-xs truncate">${itemsList}</td>
-          <td class="py-3 px-4 font-bold text-on-surface text-xs">₦${Number(o.total || 0).toFixed(2)}</td>
+          <td class="py-3 px-4 font-bold text-on-surface text-xs">${formatNaira(o.total || 0)}</td>
           <td class="py-3 px-4 text-on-surface-variant text-[11px]">${d}</td>
         </tr>`;
     }).join('');
@@ -4171,7 +4599,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
                 </div>
               </div>
               <div class="text-right flex-shrink-0">
-                <span class="font-title-lg text-secondary font-bold text-sm block">₦${Number(o.total).toFixed(2)}</span>
+                <span class="font-title-lg text-secondary font-bold text-sm block">${formatNaira(o.total)}</span>
                 <button onclick="openOrderTracking('${o.id}')" class="text-xs text-secondary font-semibold hover:underline mt-0.5 inline-flex items-center gap-0.5">
                   Track <span class="material-symbols-outlined text-[13px]">arrow_forward</span>
                 </button>
@@ -4209,7 +4637,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
                 </div>
               </td>
               <td class="px-4 py-4 font-body-md text-xs text-on-surface-variant whitespace-nowrap">${o.date || 'Recent'}</td>
-              <td class="px-4 py-4 font-label-md text-right font-bold text-on-surface text-sm whitespace-nowrap">₦${Number(o.total).toFixed(2)}</td>
+              <td class="px-4 py-4 font-label-md text-right font-bold text-on-surface text-sm whitespace-nowrap">${formatNaira(o.total)}</td>
               <td class="px-5 py-4 text-center">
                 <span class="px-2.5 py-1 rounded-full text-[11px] font-bold inline-block ${statusBadge}">${o.status || 'Processing'}</span>
               </td>
@@ -4248,7 +4676,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
                   <p class="font-body-md text-xs text-on-surface line-clamp-1 font-medium">${itemsSummary}</p>
                   <p class="font-body-md text-[11px] text-on-surface-variant mt-0.5">${o.date || 'Recent'}</p>
                 </div>
-                <span class="font-title-lg text-secondary font-bold text-sm">₦${Number(o.total).toFixed(2)}</span>
+                <span class="font-title-lg text-secondary font-bold text-sm">${formatNaira(o.total)}</span>
               </div>
             </div>
           `;
@@ -4260,7 +4688,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
 
   // ── Portal tab switcher ──────────────────────
   function switchPortalTab(tab) {
-    const tabs = ['overview', 'orders', 'settings'];
+    const tabs = ['overview', 'chats', 'orders', 'settings'];
     tabs.forEach(t => {
       const btn = document.getElementById(`ptab-${t}`);
       const content = document.getElementById(`ptab-content-${t}`);
@@ -4280,6 +4708,10 @@ ADMIN ADD / EDIT PRODUCT MODAL
     if (tab === 'orders' || tab === 'overview') {
       renderPortalOrders();
     }
+    if (tab === 'chats') {
+      renderPortalChats();
+    }
+    updatePortalChatBadges();
   }
   window.switchPortalTab = switchPortalTab;
 
@@ -4629,6 +5061,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
       portalLoggedInView?.classList.add('flex');
       if (portalWelcomeName) portalWelcomeName.textContent = currentUser.name;
       if (portalWelcomeEmail) portalWelcomeEmail.textContent = currentUser.email;
+      if (typeof updatePortalChatBadges === 'function') updatePortalChatBadges();
 
       // Role-based UI
       const userRole = (currentUser.role || 'customer').toLowerCase();
@@ -4808,7 +5241,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <div class="flex-1 min-w-0">
             <p class="font-label-md text-on-surface text-[14px] line-clamp-1 font-semibold">${item.name}</p>
             <p class="font-body-md text-xs text-on-surface-variant">${item.vendor} · ${item.category}</p>
-            <span class="font-title-lg text-secondary text-sm font-bold block mt-1">₦${item.price.toFixed(2)}</span>
+            <span class="font-title-lg text-secondary text-sm font-bold block mt-1">${formatNaira(item.price)}</span>
           </div>
           <div class="flex items-center gap-2 flex-shrink-0">
             <button class="wishlist-add-btn px-3 py-1.5 bg-primary text-on-primary rounded-xl text-xs font-label-md hover:bg-secondary transition-colors flex items-center gap-1 shadow-sm">
@@ -5236,13 +5669,13 @@ ADMIN ADD / EDIT PRODUCT MODAL
                 <span class="w-8 text-center font-label-md text-on-surface text-[13px]">${item.qty}</span>
                 <button onclick="adjustCartItemQty(${item.id}, 1)" class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors text-[14px]">+</button>
               </div>
-              <span class="font-label-md text-secondary font-bold">$${(item.price * item.qty).toFixed(2)}</span>
+              <span class="font-label-md text-secondary font-bold">${formatNaira(item.price * item.qty)}</span>
             </div>
           </div>`;
         itemsEl.appendChild(row);
       });
       if (countEl) countEl.textContent = cartItems.reduce((s,i) => s + i.qty, 0);
-      if (subtotalEl) subtotalEl.textContent = '₦' + subtotal.toFixed(2);
+      if (subtotalEl) subtotalEl.textContent = formatNaira(subtotal);
     }
   }
 
@@ -5681,7 +6114,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
       v.items.forEach((product, i) => {
         const dl = delays[i] || '';
         const badge = product.discount ? `<div class="absolute top-2 left-2 bg-error text-on-error px-2 py-0.5 rounded font-label-sm shadow-sm text-[11px]">-${product.discount}%</div>` : '';
-        const orig = product.originalPrice ? `<span class="text-[11px] text-on-surface-variant line-through">₦${Number(product.originalPrice).toFixed(2)}</span>` : '';
+        const orig = product.originalPrice ? `<span class="text-[11px] text-on-surface-variant line-through">${formatNaira(product.originalPrice)}</span>` : '';
         const isFav = wishlist.includes(product.id);
         const article = document.createElement('article');
         article.dataset.productId = product.id;
@@ -5698,7 +6131,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
             <span class="text-[10px] text-on-surface-variant uppercase tracking-wider">${product.vendor || v.name}</span>
             <h3 class="font-label-md text-on-surface line-clamp-2 leading-tight flex-1 font-semibold text-xs md:text-sm">${product.name}</h3>
             <div class="flex items-end justify-between mt-auto pt-1">
-              <div>${orig}<span class="font-title-lg text-secondary block font-bold text-sm md:text-base">₦${Number(product.price).toFixed(2)}</span></div>
+              <div>${orig}<span class="font-title-lg text-secondary block font-bold text-sm md:text-base">${formatNaira(product.price)}</span></div>
               <button class="vd-cart-btn w-8 h-8 bg-primary text-on-primary rounded-full flex items-center justify-center hover:bg-secondary transition-colors shadow-sm" onclick="event.stopPropagation(); addToCartDirect(${product.id})">
                 <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
               </button>
@@ -5729,10 +6162,44 @@ ADMIN ADD / EDIT PRODUCT MODAL
     document.getElementById('modal-category').textContent = product.category;
     document.getElementById('modal-description').textContent = product.description;
 
-    document.getElementById('modal-price').textContent = '₦' + product.price.toFixed(2);
+    // Handle stock status & remaining count
+    const pStock = (product.stock !== undefined && product.stock !== null) ? Number(product.stock) : 15;
+    const stockTextEl = document.getElementById('modal-stock-text');
+    const stockBadgeEl = document.getElementById('modal-stock-badge');
+    const addBtnEl = document.getElementById('modal-add-to-cart-btn');
+
+    if (stockTextEl && stockBadgeEl) {
+      if (pStock <= 0) {
+        stockTextEl.textContent = 'Out of Stock';
+        stockBadgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-xs bg-red-50 text-red-700 border border-red-200';
+        if (addBtnEl) {
+          addBtnEl.disabled = true;
+          addBtnEl.classList.add('opacity-50', 'cursor-not-allowed');
+          addBtnEl.innerHTML = '<span class="material-symbols-outlined text-[20px]">block</span> Out of Stock';
+        }
+      } else if (pStock <= 5) {
+        stockTextEl.textContent = `Only ${pStock} item${pStock === 1 ? '' : 's'} left - order soon!`;
+        stockBadgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-xs bg-amber-50 text-amber-800 border border-amber-200';
+        if (addBtnEl) {
+          addBtnEl.disabled = false;
+          addBtnEl.classList.remove('opacity-50', 'cursor-not-allowed');
+          addBtnEl.innerHTML = '<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Add to Cart';
+        }
+      } else {
+        stockTextEl.textContent = `In Stock: ${pStock} items left`;
+        stockBadgeEl.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-label-sm text-xs bg-emerald-50 text-emerald-700 border border-emerald-200';
+        if (addBtnEl) {
+          addBtnEl.disabled = false;
+          addBtnEl.classList.remove('opacity-50', 'cursor-not-allowed');
+          addBtnEl.innerHTML = '<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Add to Cart';
+        }
+      }
+    }
+
+    document.getElementById('modal-price').textContent = formatNaira(product.price);
     const origEl = document.getElementById('modal-original-price');
     if (product.originalPrice) {
-      origEl.textContent = '₦' + product.originalPrice.toFixed(2);
+      origEl.textContent = formatNaira(product.originalPrice);
       origEl.classList.remove('hidden');
     } else {
       origEl.classList.add('hidden');
@@ -5831,7 +6298,13 @@ ADMIN ADD / EDIT PRODUCT MODAL
   };
 
   window.adjustModalQty = function(delta) {
-    modalQty = Math.max(1, Math.min(99, modalQty + delta));
+    const maxStock = (modalProduct && modalProduct.stock !== undefined && modalProduct.stock !== null) ? Number(modalProduct.stock) : 99;
+    if (maxStock <= 0) {
+      modalQty = 1;
+      document.getElementById('modal-qty-display').textContent = '0';
+      return;
+    }
+    modalQty = Math.max(1, Math.min(maxStock, modalQty + delta));
     document.getElementById('modal-qty-display').textContent = modalQty;
   };
 
@@ -5924,7 +6397,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <p class="font-label-md text-on-surface line-clamp-1">${p.name}</p>
           <p class="font-label-sm text-on-surface-variant text-[11px] mt-0.5">${p.vendor} · ${p.category}</p>
           <div class="flex items-center gap-1 mt-1">
-            <span class="font-title-lg text-secondary text-[15px]">$${p.price.toFixed(2)}</span>
+            <span class="font-title-lg text-secondary text-[15px]">${formatNaira(p.price)}</span>
             ${p.originalPrice ? `<span class="font-label-sm text-on-surface-variant text-[11px] line-through">$${p.originalPrice}</span>` : ''}${discBadge}
           </div>
         </div>
@@ -5964,7 +6437,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           data = {
             product: ord.items ? ord.items.map(i => i.name).join(', ') : 'Order Items',
             vendor: ord.items ? ord.items.map(i => i.vendor || 'T-Shop Artisan').join(', ') : 'T-Shop Artisan',
-            amount: '₦' + Number(ord.total).toFixed(2),
+            amount: formatNaira(ord.total),
             icon: 'package_2',
             eta: '5–8 business days',
             currentStep: 1,
@@ -6045,7 +6518,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <p class="font-label-md text-on-surface text-[13px] line-clamp-1">${item.name}</p>
           <p class="font-label-sm text-on-surface-variant text-[11px]">${item.vendor} · Qty ${item.qty}</p>
         </div>
-        <span class="font-label-md text-on-surface font-semibold text-[13px] flex-shrink-0">$${(item.price * item.qty).toFixed(2)}</span>`;
+        <span class="font-label-md text-on-surface font-semibold text-[13px] flex-shrink-0">${formatNaira(item.price * item.qty)}</span>`;
       container.appendChild(row);
     });
   }
@@ -6081,7 +6554,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
     const shipping = getShippingCost(subtotal);
     const total = subtotal + shipping;
     const t1 = document.getElementById('co-step1-total');
-    if (t1) t1.textContent = '₦' + total.toFixed(2);
+    if (t1) t1.textContent = formatNaira(total);
     setTimeout(() => navigate('checkout'), 50);
   };
 
@@ -6195,7 +6668,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
 
     if (nameEl) nameEl.textContent = vendorShop;
     if (numEl) numEl.textContent = _cachedMoniepointAccount;
-    if (amtEl) amtEl.textContent = '₦' + total.toFixed(2);
+    if (amtEl) amtEl.textContent = formatNaira(total);
   }
   window.updateMoniepointDetails = updateMoniepointDetails;
 
@@ -6242,9 +6715,9 @@ ADMIN ADD / EDIT PRODUCT MODAL
     const s2sub = document.getElementById('co-step2-subtotal');
     const s2ship = document.getElementById('co-step2-shipping');
     const s2tot = document.getElementById('co-step2-total');
-    if (s2sub) s2sub.textContent = '₦' + subtotal.toFixed(2);
-    if (s2ship) s2ship.textContent = shipping === 0 ? 'FREE' : '₦' + shipping.toFixed(2);
-    if (s2tot) s2tot.textContent = '₦' + (subtotal + shipping).toFixed(2);
+    if (s2sub) s2sub.textContent = formatNaira(subtotal);
+    if (s2ship) s2ship.textContent = shipping === 0 ? 'FREE' : formatNaira(shipping);
+    if (s2tot) s2tot.textContent = formatNaira(subtotal + shipping);
 
     updateMoniepointDetails();
     setCheckoutStep(2);
@@ -6334,13 +6807,13 @@ ADMIN ADD / EDIT PRODUCT MODAL
           <p class="font-label-sm text-on-surface-variant text-[11px]">${item.vendor}${item.variant ? ' · ' + item.variant : ''}</p>
           <p class="font-label-sm text-on-surface-variant text-[11px]">Qty: ${item.qty}</p>
         </div>
-        <span class="font-label-md text-secondary font-bold flex-shrink-0">₦${(Number(item.price) * item.qty).toFixed(2)}</span>`;
+        <span class="font-label-md text-secondary font-bold flex-shrink-0">${formatNaira(Number(item.price) * item.qty)}</span>`;
       itemsContainer.appendChild(row);
     });
 
-    document.getElementById('co-confirm-subtotal').textContent = '₦' + subtotal.toFixed(2);
-    document.getElementById('co-confirm-shipping').textContent = shipping === 0 ? 'FREE' : '₦' + shipping.toFixed(2);
-    document.getElementById('co-confirm-total').textContent = '₦' + total.toFixed(2);
+    document.getElementById('co-confirm-subtotal').textContent = formatNaira(subtotal);
+    document.getElementById('co-confirm-shipping').textContent = shipping === 0 ? 'FREE' : formatNaira(shipping);
+    document.getElementById('co-confirm-total').textContent = formatNaira(total);
 
     // ── Save order locally for user portal & order history ──
     const newOrder = {
@@ -6367,7 +6840,7 @@ ADMIN ADD / EDIT PRODUCT MODAL
     ORDER_TRACKING_DATA[orderNum] = {
       product: cartItems.map(i => i.name).join(', '),
       vendor: cartItems.map(i => i.vendor || 'T-Shop Artisan').join(', '),
-      amount: '₦' + total.toFixed(2),
+      amount: formatNaira(total),
       icon: 'package_2',
       eta: '5–8 business days',
       currentStep: 1,
@@ -6460,12 +6933,1121 @@ ADMIN ADD / EDIT PRODUCT MODAL
   setTimeout(wireOrderRows, 200);
 
   // ── Initialize App State on Load ──────────────
+  
+  // =========================================================================
+  // ── CHAT & MESSAGING SYSTEM (Vendor & Customer) ─────────────────────────
+  // =========================================================================
+  var activeChatId = null;
+  var chatSearchQuery = '';
+
+  function initChatSystem() {
+    let chats = [];
+    try {
+      chats = JSON.parse(localStorage.getItem('tshop_chats') || '[]');
+    } catch(e) { chats = []; }
+
+    if (!chats || chats.length === 0) {
+      const now = Date.now();
+      chats = [
+        {
+          id: 'msg_1',
+          chatId: 'goodness@gmail.com:daniel@example.com',
+          vendorEmail: 'goodness@gmail.com',
+          vendorName: 'Goodness Ice Block',
+          customerEmail: 'daniel@example.com',
+          customerName: 'Daniel Buyer',
+          senderRole: 'customer',
+          senderEmail: 'daniel@example.com',
+          senderName: 'Daniel Buyer',
+          text: 'Hello Goodness Ice Block, do you offer same-day delivery for bulk ice block orders?',
+          timestamp: now - 1000 * 60 * 35,
+          readByVendor: false,
+          readByCustomer: true,
+          productContext: {
+            id: 1,
+            name: 'Pure Ice Block Pack',
+            price: 2500,
+            image: 'assets/images/cat-beauty.jpg'
+          }
+        },
+        {
+          id: 'msg_2',
+          chatId: 'goodness@gmail.com:amaka@example.com',
+          vendorEmail: 'goodness@gmail.com',
+          vendorName: 'Goodness Ice Block',
+          customerEmail: 'amaka@example.com',
+          customerName: 'Amaka Eze',
+          senderRole: 'customer',
+          senderEmail: 'amaka@example.com',
+          senderName: 'Amaka Eze',
+          text: 'Hi! I want to confirm if your store is open for pickups this Saturday.',
+          timestamp: now - 1000 * 60 * 120,
+          readByVendor: false,
+          readByCustomer: true
+        },
+        {
+          id: 'msg_3',
+          chatId: 'studiogoods@example.com:goodness@gmail.com',
+          vendorEmail: 'studiogoods@example.com',
+          vendorName: 'Studio Goods',
+          customerEmail: 'goodness@gmail.com',
+          customerName: 'Goodness Ice Block',
+          senderRole: 'vendor',
+          senderEmail: 'studiogoods@example.com',
+          senderName: 'Studio Goods',
+          text: 'Hello! Your handcrafted ceramic vase order has been packed and will ship tomorrow.',
+          timestamp: now - 1000 * 60 * 60 * 4,
+          readByVendor: true,
+          readByCustomer: false
+        }
+      ];
+      localStorage.setItem('tshop_chats', JSON.stringify(chats));
+    }
+    updatePortalChatBadges();
+  }
+
+  function getStoredChats() {
+    try {
+      return JSON.parse(localStorage.getItem('tshop_chats') || '[]');
+    } catch {
+      return [];
+    }
+  }
+
+  function saveStoredChats(chats) {
+    try {
+      localStorage.setItem('tshop_chats', JSON.stringify(chats));
+    } catch(e) {}
+    updatePortalChatBadges();
+  }
+
+  function getUnreadChatCount() {
+    if (!currentUser) return 0;
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const isVendor = currentUser.isVendor || (currentUser.role === 'vendor');
+    const chats = getStoredChats();
+
+    let unread = 0;
+    chats.forEach(m => {
+      if (isVendor && (m.vendorEmail || '').toLowerCase().trim() === userEmail) {
+        if (!m.readByVendor && m.senderRole === 'customer') unread++;
+      } else if (!isVendor && (m.customerEmail || '').toLowerCase().trim() === userEmail) {
+        if (!m.readByCustomer && m.senderRole === 'vendor') unread++;
+      }
+    });
+    return unread;
+  }
+
+  function updatePortalChatBadges() {
+    const count = getUnreadChatCount();
+    const tabBadge = document.getElementById('portal-chat-unread-badge');
+    const quickBadge = document.getElementById('portal-quick-chat-badge');
+    
+    if (tabBadge) {
+      if (count > 0) {
+        tabBadge.textContent = count;
+        tabBadge.classList.remove('hidden');
+      } else {
+        tabBadge.classList.add('hidden');
+      }
+    }
+
+    if (quickBadge) {
+      if (count > 0) {
+        quickBadge.textContent = count;
+        quickBadge.classList.remove('hidden');
+      } else {
+        quickBadge.classList.add('hidden');
+      }
+    }
+  }
+
+  function renderPortalChats(search = '') {
+    if (!currentUser) return;
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const isVendor = currentUser.isVendor || (currentUser.role === 'vendor');
+    const allMessages = getStoredChats();
+
+    const convMap = {};
+
+    allMessages.forEach(msg => {
+      const vEmail = (msg.vendorEmail || '').toLowerCase().trim();
+      const cEmail = (msg.customerEmail || '').toLowerCase().trim();
+
+      if (vEmail !== userEmail && cEmail !== userEmail) return;
+
+      const threadKey = msg.chatId || `${vEmail}:${cEmail}`;
+      if (!convMap[threadKey]) {
+        convMap[threadKey] = {
+          chatId: threadKey,
+          vendorEmail: msg.vendorEmail,
+          vendorName: msg.vendorName || 'Vendor',
+          customerEmail: msg.customerEmail,
+          customerName: msg.customerName || 'Customer',
+          lastMessage: msg.text,
+          lastTimestamp: msg.timestamp,
+          unreadCount: 0,
+          messages: [],
+          productContext: msg.productContext || null
+        };
+      }
+
+      convMap[threadKey].messages.push(msg);
+      if (msg.timestamp >= convMap[threadKey].lastTimestamp) {
+        convMap[threadKey].lastTimestamp = msg.timestamp;
+        convMap[threadKey].lastMessage = msg.text;
+        if (msg.productContext) convMap[threadKey].productContext = msg.productContext;
+      }
+
+      if (isVendor && !msg.readByVendor && msg.senderRole === 'customer') {
+        convMap[threadKey].unreadCount++;
+      } else if (!isVendor && !msg.readByCustomer && msg.senderRole === 'vendor') {
+        convMap[threadKey].unreadCount++;
+      }
+    });
+
+    let conversations = Object.values(convMap).sort((a, b) => b.lastTimestamp - a.lastTimestamp);
+
+    if (search && search.trim()) {
+      const q = search.toLowerCase().trim();
+      conversations = conversations.filter(c => {
+        const otherName = (isVendor ? c.customerName : c.vendorName).toLowerCase();
+        const otherEmail = (isVendor ? c.customerEmail : c.vendorEmail).toLowerCase();
+        const lastMsg = (c.lastMessage || '').toLowerCase();
+        return otherName.includes(q) || otherEmail.includes(q) || lastMsg.includes(q);
+      });
+    }
+
+    const totalBadge = document.getElementById('chat-total-threads-badge');
+    if (totalBadge) totalBadge.textContent = `${conversations.length} conversation${conversations.length === 1 ? '' : 's'}`;
+
+    const listEl = document.getElementById('chat-conversations-list');
+    if (!listEl) return;
+
+    if (conversations.length === 0) {
+      listEl.innerHTML = `
+        <div class="p-8 text-center text-on-surface-variant flex flex-col items-center gap-2">
+          <span class="material-symbols-outlined text-3xl text-outline-variant">chat_bubble_outline</span>
+          <p class="font-body-md text-xs font-semibold">No messages yet</p>
+          <p class="font-body-md text-[11px] text-on-surface-variant/70 max-w-[200px]">
+            ${isVendor ? 'Customer messages will appear here when they contact your shop.' : 'Messages with vendors will appear here.'}
+          </p>
+        </div>`;
+    } else {
+      listEl.innerHTML = conversations.map(c => {
+        const otherName = isVendor ? c.customerName : c.vendorName;
+        const otherRole = isVendor ? 'Customer' : 'Vendor';
+        const initial = (otherName || '?')[0].toUpperCase();
+        const isSelected = activeChatId === c.chatId;
+        const timeStr = formatChatTime(c.lastTimestamp);
+
+        return `
+          <div onclick="selectPortalChat('${c.chatId}')" 
+            class="p-3.5 flex items-start gap-3 cursor-pointer transition-colors ${
+              isSelected ? 'bg-secondary/10 border-l-4 border-secondary' : 'hover:bg-surface-container/50'
+            }">
+            <div class="w-10 h-10 rounded-full ${isVendor ? 'bg-primary-fixed text-primary' : 'bg-secondary/15 text-secondary'} font-bold flex items-center justify-center flex-shrink-0 text-sm">
+              ${initial}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-1 mb-0.5">
+                <span class="font-label-md text-xs text-on-surface font-semibold truncate">${otherName}</span>
+                <span class="font-label-sm text-[10px] text-on-surface-variant whitespace-nowrap">${timeStr}</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <p class="font-body-md text-[11px] ${c.unreadCount > 0 ? 'text-on-surface font-bold' : 'text-on-surface-variant'} truncate">
+                  ${c.lastMessage || 'Sent a message'}
+                </p>
+                ${c.unreadCount > 0 ? `<span class="px-1.5 py-0.5 text-[10px] font-bold bg-error text-on-error rounded-full flex-shrink-0">${c.unreadCount}</span>` : ''}
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    if (!activeChatId && conversations.length > 0) {
+      selectPortalChat(conversations[0].chatId);
+    } else if (activeChatId) {
+      renderActiveChatThread();
+    }
+  }
+
+  function formatChatTime(ts) {
+    if (!ts) return '';
+    const now = Date.now();
+    const diff = now - ts;
+    if (diff < 60000) return 'Just now';
+    if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+    if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+    const d = new Date(ts);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function selectPortalChat(chatId) {
+    activeChatId = chatId;
+    const isVendor = currentUser?.isVendor || (currentUser?.role === 'vendor');
+    const userEmail = (currentUser?.email || '').toLowerCase().trim();
+
+    const allMessages = getStoredChats();
+    let updated = false;
+
+    allMessages.forEach(m => {
+      const threadKey = m.chatId || `${(m.vendorEmail||'').toLowerCase().trim()}:${(m.customerEmail||'').toLowerCase().trim()}`;
+      if (threadKey === chatId) {
+        if (isVendor && !m.readByVendor && m.senderRole === 'customer') {
+          m.readByVendor = true;
+          updated = true;
+        } else if (!isVendor && !m.readByCustomer && m.senderRole === 'vendor') {
+          m.readByCustomer = true;
+          updated = true;
+        }
+      }
+    });
+
+    if (updated) {
+      saveStoredChats(allMessages);
+    }
+
+    const sidebar = document.getElementById('chat-sidebar-panel');
+    const mainPanel = document.getElementById('chat-main-panel');
+    if (window.innerWidth < 768) {
+      if (sidebar) sidebar.classList.add('hidden');
+      if (mainPanel) {
+        mainPanel.classList.remove('hidden');
+        mainPanel.classList.add('flex');
+      }
+    }
+
+    renderPortalChats();
+    renderActiveChatThread();
+  }
+
+  function mobileBackToChatList() {
+    const sidebar = document.getElementById('chat-sidebar-panel');
+    const mainPanel = document.getElementById('chat-main-panel');
+    if (sidebar) sidebar.classList.remove('hidden');
+    if (mainPanel) {
+      mainPanel.classList.add('hidden');
+      mainPanel.classList.remove('flex');
+    }
+  }
+
+  function renderActiveChatThread() {
+    if (!activeChatId || !currentUser) return;
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const isVendor = currentUser.isVendor || (currentUser.role === 'vendor');
+    const allMessages = getStoredChats();
+
+    const threadMessages = allMessages.filter(m => {
+      const threadKey = m.chatId || `${(m.vendorEmail||'').toLowerCase().trim()}:${(m.customerEmail||'').toLowerCase().trim()}`;
+      return threadKey === activeChatId;
+    }).sort((a, b) => a.timestamp - b.timestamp);
+
+    if (threadMessages.length === 0) return;
+
+    const firstMsg = threadMessages[0];
+    const lastMsg = threadMessages[threadMessages.length - 1];
+    const otherName = isVendor ? firstMsg.customerName : firstMsg.vendorName;
+    const otherRole = isVendor ? 'Customer' : 'Vendor';
+
+    const recName = document.getElementById('chat-recipient-name');
+    const recBadge = document.getElementById('chat-recipient-role-badge');
+    const recAvatar = document.getElementById('chat-recipient-avatar');
+
+    if (recName) recName.textContent = otherName || 'User';
+    if (recBadge) recBadge.textContent = otherRole;
+    if (recAvatar) recAvatar.textContent = (otherName || '?')[0].toUpperCase();
+
+    const contextBanner = document.getElementById('chat-product-context-banner');
+    const prodContext = lastMsg.productContext || firstMsg.productContext;
+    if (contextBanner) {
+      if (prodContext && prodContext.name) {
+        contextBanner.classList.remove('hidden');
+        document.getElementById('chat-context-name').textContent = prodContext.name;
+        document.getElementById('chat-context-price').textContent = formatNaira(prodContext.price || 0);
+        if (prodContext.image) {
+          document.getElementById('chat-context-img').src = prodContext.image;
+        }
+        window._activeChatProduct = prodContext;
+      } else {
+        contextBanner.classList.add('hidden');
+      }
+    }
+
+    const container = document.getElementById('chat-messages-container');
+    if (!container) return;
+
+    container.innerHTML = threadMessages.map(m => {
+      const isMe = (m.senderRole === 'vendor' && isVendor) || (m.senderRole === 'customer' && !isVendor) || ((m.senderEmail || '').toLowerCase().trim() === userEmail);
+      const timeStr = new Date(m.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      if (isMe) {
+        return `
+          <div class="flex flex-col items-end gap-1 max-w-[80%] self-end">
+            <div class="px-4 py-2.5 rounded-2xl rounded-br-sm bg-secondary text-on-secondary font-body-md text-xs shadow-sm">
+              <p class="leading-relaxed whitespace-pre-wrap">${m.text}</p>
+            </div>
+            <div class="flex items-center gap-1 text-[10px] text-on-surface-variant/70 pr-1">
+              <span>${timeStr}</span>
+              <span class="material-symbols-outlined text-[13px] text-secondary">done_all</span>
+            </div>
+          </div>`;
+      } else {
+        return `
+          <div class="flex items-start gap-2.5 max-w-[85%] self-start">
+            <div class="w-8 h-8 rounded-full ${isVendor ? 'bg-primary-fixed text-primary' : 'bg-secondary/15 text-secondary'} font-bold flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+              ${(m.senderName || otherName || '?')[0].toUpperCase()}
+            </div>
+            <div class="flex flex-col gap-1">
+              <div class="px-4 py-2.5 rounded-2xl rounded-tl-sm bg-surface-container-high text-on-surface font-body-md text-xs shadow-sm">
+                <p class="leading-relaxed whitespace-pre-wrap">${m.text}</p>
+              </div>
+              <span class="text-[10px] text-on-surface-variant/70 pl-1">${timeStr}</span>
+            </div>
+          </div>`;
+      }
+    }).join('');
+
+    container.scrollTop = container.scrollHeight;
+
+    const quickRepliesContainer = document.getElementById('chat-quick-replies');
+    if (quickRepliesContainer) {
+      const replies = isVendor
+        ? ["Yes, this item is available in stock!", "We ship within 24-48 hours.", "Feel free to place your order anytime!", "Thank you for reaching out!"]
+        : ["Is this product still in stock?", "Can I get a discount on bulk orders?", "How fast can you deliver to Lagos?", "Do you have other colors?"];
+      quickRepliesContainer.innerHTML = replies.map(r => `
+        <button onclick="sendPortalChatMessage('${r.replace(/'/g, "\\'")}')" 
+          class="px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 hover:border-secondary hover:text-secondary font-body-md text-[11px] text-on-surface-variant whitespace-nowrap transition-colors flex-shrink-0">
+          ${r}
+        </button>
+      `).join('');
+    }
+  }
+
+  function sendPortalChatMessage(customText = null) {
+    const input = document.getElementById('chat-message-input');
+    const text = (customText || input?.value || '').trim();
+    if (!text || !activeChatId || !currentUser) return;
+
+    const isVendor = currentUser.isVendor || (currentUser.role === 'vendor');
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const userName = currentUser.shopName || currentUser.name || (isVendor ? 'Vendor' : 'Customer');
+
+    const allMessages = getStoredChats();
+    const threadMessages = allMessages.filter(m => {
+      const threadKey = m.chatId || `${(m.vendorEmail||'').toLowerCase().trim()}:${(m.customerEmail||'').toLowerCase().trim()}`;
+      return threadKey === activeChatId;
+    });
+
+    let vendorEmail = isVendor ? userEmail : '';
+    let vendorName = isVendor ? userName : 'Vendor';
+    let customerEmail = !isVendor ? userEmail : '';
+    let customerName = !isVendor ? userName : 'Customer';
+    let productContext = null;
+
+    if (threadMessages.length > 0) {
+      vendorEmail = threadMessages[0].vendorEmail;
+      vendorName = threadMessages[0].vendorName;
+      customerEmail = threadMessages[0].customerEmail;
+      customerName = threadMessages[0].customerName;
+      productContext = threadMessages[0].productContext;
+    }
+
+    const newMsg = {
+      id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+      chatId: activeChatId,
+      vendorEmail,
+      vendorName,
+      customerEmail,
+      customerName,
+      senderRole: isVendor ? 'vendor' : 'customer',
+      senderEmail: userEmail,
+      senderName: userName,
+      text,
+      timestamp: Date.now(),
+      readByVendor: isVendor ? true : false,
+      readByCustomer: !isVendor ? true : false,
+      productContext
+    };
+
+    allMessages.push(newMsg);
+    saveStoredChats(allMessages);
+
+    if (input) input.value = '';
+
+    renderPortalChats();
+    renderActiveChatThread();
+  }
+
+  function chatWithModalVendor() {
+    if (!modalProduct) return;
+    if (!currentUser) {
+      closeProductModal();
+      openAuthModal('login');
+      showToastMsg('Please sign in to message vendors.');
+      return;
+    }
+
+    const vendorName = modalProduct.vendor || 'T-Shop Vendor';
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const userName = currentUser.shopName || currentUser.name || '';
+    if (userName.toLowerCase() === vendorName.toLowerCase()) {
+      showToastMsg("This is your own product!");
+      return;
+    }
+
+    const vendorEmail = (vendorName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() + '@example.com');
+    const chatId = `${vendorEmail}:${userEmail}`;
+
+    const allMessages = getStoredChats();
+    const existing = allMessages.find(m => m.chatId === chatId);
+
+    if (!existing) {
+      allMessages.push({
+        id: 'msg_' + Date.now(),
+        chatId,
+        vendorEmail,
+        vendorName,
+        customerEmail: userEmail,
+        customerName: userName || 'Customer',
+        senderRole: 'customer',
+        senderEmail: userEmail,
+        senderName: userName || 'Customer',
+        text: `Hello ${vendorName}, I am interested in "${modalProduct.name}". Is it currently available?`,
+        timestamp: Date.now(),
+        readByVendor: false,
+        readByCustomer: true,
+        productContext: {
+          id: modalProduct.id,
+          name: modalProduct.name,
+          price: modalProduct.price,
+          image: modalProduct.image
+        }
+      });
+      saveStoredChats(allMessages);
+    }
+
+    closeProductModal();
+    activeChatId = chatId;
+    navigate('portal');
+    switchPortalTab('chats');
+    renderPortalChats();
+  }
+
+  function openChatProductDetails() {
+    if (window._activeChatProduct) {
+      const prod = ALL_PRODUCTS.find(p => String(p.id) === String(window._activeChatProduct.id)) || window._activeChatProduct;
+      openProductModal(prod);
+    }
+  }
+
+  function handleChatSearch(val) {
+    chatSearchQuery = val;
+    renderPortalChats(val);
+  }
+
+  function clearCurrentChatHistory() {
+    if (!activeChatId) return;
+    if (!confirm("Are you sure you want to delete this conversation?")) return;
+    let allMessages = getStoredChats();
+    allMessages = allMessages.filter(m => {
+      const threadKey = m.chatId || `${(m.vendorEmail||'').toLowerCase().trim()}:${(m.customerEmail||'').toLowerCase().trim()}`;
+      return threadKey !== activeChatId;
+    });
+    saveStoredChats(allMessages);
+    activeChatId = null;
+    renderPortalChats();
+    const container = document.getElementById('chat-messages-container');
+    if (container) {
+      container.innerHTML = `
+        <div class="flex flex-col items-center justify-center h-full text-on-surface-variant text-center gap-2">
+          <span class="material-symbols-outlined text-4xl text-outline-variant">chat</span>
+          <p class="font-body-md text-xs">Conversation deleted.</p>
+        </div>`;
+    }
+  }
+
+  window.selectPortalChat = selectPortalChat;
+  window.sendPortalChatMessage = sendPortalChatMessage;
+  window.chatWithModalVendor = chatWithModalVendor;
+  window.openChatProductDetails = openChatProductDetails;
+  window.handleChatSearch = handleChatSearch;
+  window.clearCurrentChatHistory = clearCurrentChatHistory;
+  window.mobileBackToChatList = mobileBackToChatList;
+  window.updatePortalChatBadges = updatePortalChatBadges;
+  window.initChatSystem = initChatSystem;
+
+  
+  // =========================================================================
+  // ── SERVICES & ARTISANS SYSTEM ──────────────────────────────────────────
+  // =========================================================================
+  let ALL_SERVICES = [];
+  let _selectedServiceCategory = 'all';
+  let _serviceSearchQuery = '';
+  let activeService = null;
+
+  const DEFAULT_SERVICES = [];
+
+  function initServices() {
+    let saved = [];
+    try {
+      saved = JSON.parse(localStorage.getItem('tshop_services') || '[]');
+    } catch(e) { saved = []; }
+
+    if (!saved || saved.length === 0) {
+      ALL_SERVICES = [...DEFAULT_SERVICES];
+      localStorage.setItem('tshop_services', JSON.stringify(ALL_SERVICES));
+    } else {
+      ALL_SERVICES = saved;
+    }
+    renderServicesPage();
+  }
+
+  function renderServicesPage() {
+    const grid = document.getElementById('services-grid');
+    const badge = document.getElementById('services-count-badge');
+    if (!grid) return;
+
+    let list = ALL_SERVICES;
+
+    // Category filter
+    if (_selectedServiceCategory && _selectedServiceCategory !== 'all') {
+      list = list.filter(s => (s.category || '').toLowerCase() === _selectedServiceCategory.toLowerCase());
+    }
+
+    // Search query filter
+    if (_serviceSearchQuery && _serviceSearchQuery.trim()) {
+      const q = _serviceSearchQuery.toLowerCase().trim();
+      list = list.filter(s => 
+        (s.title || '').toLowerCase().includes(q) ||
+        (s.provider || '').toLowerCase().includes(q) ||
+        (s.category || '').toLowerCase().includes(q) ||
+        (s.location || '').toLowerCase().includes(q) ||
+        (s.description || '').toLowerCase().includes(q)
+      );
+    }
+
+    if (badge) {
+      badge.textContent = `${list.length} specialist${list.length === 1 ? '' : 's'}`;
+    }
+
+    if (list.length === 0) {
+      grid.innerHTML = `
+        <div class="col-span-full py-16 text-center text-on-surface-variant flex flex-col items-center gap-3">
+          <span class="material-symbols-outlined text-4xl text-outline-variant">handyman</span>
+          <p class="font-headline-md text-base font-semibold">No service providers found</p>
+          <p class="font-body-md text-xs max-w-sm">Try selecting another category or click "List a Service" to add your service.</p>
+          <button onclick="openCreateServiceModal()" class="mt-2 px-4 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow">
+            List Your Service Now
+          </button>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = list.map(s => {
+      const initial = (s.provider || '?')[0].toUpperCase();
+      return `
+        <div class="group bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-secondary/40 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
+          onclick="openServiceModal('${s.id}')">
+          
+          <!-- Image -->
+          <div class="aspect-[16/10] bg-surface-container relative overflow-hidden">
+            <img src="${s.image || 'assets/images/cat-beauty.jpg'}" alt="${s.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='assets/images/cat-beauty.jpg'">
+            <span class="absolute top-3 left-3 bg-secondary text-on-secondary px-2.5 py-1 rounded-full font-label-sm text-[10px] font-semibold shadow-sm uppercase tracking-wider">
+              ${s.category || 'Service'}
+            </span>
+            <span class="absolute bottom-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md text-on-surface px-2 py-0.5 rounded-lg font-label-sm text-[11px] font-bold shadow-sm flex items-center gap-1">
+              <span class="text-amber-500">★</span> ${s.rating || '4.9'}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-1.5 text-on-surface-variant text-[11px] mb-1">
+                <span class="material-symbols-outlined text-[14px] text-secondary">location_on</span>
+                <span class="truncate">${s.location || 'Nigeria'}</span>
+              </div>
+              <h3 class="font-label-md text-on-surface font-semibold text-sm line-clamp-2 group-hover:text-secondary transition-colors mb-2 leading-snug">
+                ${s.title}
+              </h3>
+              <p class="font-body-md text-xs text-on-surface-variant line-clamp-2 mb-3 leading-relaxed">
+                ${s.description || 'Professional on-demand service.'}
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between mt-auto">
+              <div>
+                <p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Starting Rate</p>
+                <p class="font-title-lg text-sm font-bold text-secondary">${formatNaira(s.price)}</p>
+              </div>
+              <button onclick="event.stopPropagation(); quickChatWithService('${s.id}')" 
+                class="px-3.5 py-1.5 rounded-xl bg-secondary/10 hover:bg-secondary text-secondary hover:text-on-secondary font-label-md text-xs transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px]">chat</span>
+                <span>Inquire</span>
+              </button>
+            </div>
+
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function filterServices(category, btn) {
+    _selectedServiceCategory = category;
+    document.querySelectorAll('.service-cat-pill').forEach(b => {
+      b.classList.remove('pill-active', 'bg-secondary', 'text-on-secondary');
+      b.classList.add('bg-surface-container', 'text-on-surface-variant');
+    });
+    if (btn) {
+      btn.classList.add('pill-active', 'bg-secondary', 'text-on-secondary');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    }
+    renderServicesPage();
+  }
+
+  function handleServicesSearch(val) {
+    _serviceSearchQuery = val;
+    renderServicesPage();
+  }
+
+  function openServiceModal(serviceId) {
+    const s = ALL_SERVICES.find(x => String(x.id) === String(serviceId));
+    if (!s) return;
+    activeService = s;
+
+    document.getElementById('smodal-image').src = s.image || 'assets/images/cat-beauty.jpg';
+    document.getElementById('smodal-category-badge').textContent = s.category || 'Service';
+    document.getElementById('smodal-provider').textContent = s.provider || 'Specialist Pro';
+    document.getElementById('smodal-location').innerHTML = `<span class="material-symbols-outlined text-[14px]">location_on</span><span>${s.location || 'Nigeria'}</span>`;
+    document.getElementById('smodal-title').textContent = s.title;
+    document.getElementById('smodal-rating').textContent = s.rating ? `${s.rating} (${s.reviewsCount || 20}+ reviews)` : '4.9 (Verified)';
+    document.getElementById('smodal-desc').textContent = s.description || 'High-quality on-demand service. Available for home visits and studio consultations.';
+    document.getElementById('smodal-price').textContent = 'From ' + formatNaira(s.price);
+
+    const overlay = document.getElementById('service-modal-overlay');
+    overlay.classList.remove('pointer-events-none');
+    overlay.classList.add('open', 'opacity-100');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeServiceModal() {
+    const overlay = document.getElementById('service-modal-overlay');
+    overlay.classList.remove('open', 'opacity-100');
+    overlay.classList.add('pointer-events-none');
+    document.body.style.overflow = '';
+  }
+
+  function handleServiceModalOverlayClick(e) {
+    if (e.target === document.getElementById('service-modal-overlay')) closeServiceModal();
+  }
+
+  function chatWithActiveServicePro() {
+    if (!activeService) return;
+    closeServiceModal();
+    quickChatWithService(activeService.id);
+  }
+
+  function quickChatWithService(serviceId) {
+    const s = ALL_SERVICES.find(x => String(x.id) === String(serviceId));
+    if (!s) return;
+
+    if (!currentUser) {
+      openAuthModal('login');
+      showToastMsg('Please sign in to message service providers.');
+      return;
+    }
+
+    const providerName = s.provider || 'Service Pro';
+    const userEmail = (currentUser.email || '').toLowerCase().trim();
+    const userName = currentUser.shopName || currentUser.name || '';
+    
+    const providerEmail = (providerName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() + '@example.com');
+    const chatId = `${providerEmail}:${userEmail}`;
+
+    const allMessages = getStoredChats();
+    const existing = allMessages.find(m => m.chatId === chatId);
+
+    if (!existing) {
+      allMessages.push({
+        id: 'msg_' + Date.now(),
+        chatId,
+        vendorEmail: providerEmail,
+        vendorName: providerName,
+        customerEmail: userEmail,
+        customerName: userName || 'Customer',
+        senderRole: 'customer',
+        senderEmail: userEmail,
+        senderName: userName || 'Customer',
+        text: `Hello ${providerName}, I saw your service "${s.title}" (${s.location}) on T-Shop. Are you available for bookings?`,
+        timestamp: Date.now(),
+        readByVendor: false,
+        readByCustomer: true,
+        productContext: {
+          id: s.id,
+          name: s.title,
+          price: s.price,
+          image: s.image
+        }
+      });
+      saveStoredChats(allMessages);
+    }
+
+    activeChatId = chatId;
+    navigate('portal');
+    switchPortalTab('chats');
+    renderPortalChats();
+  }
+
+  
+  // ── Service Image Upload Logic ────────────────────
+  var _selectedServiceImageData = null;
+
+  function switchServiceImageTab(tab) {
+    const tabUrl = document.getElementById('serv-img-tab-url');
+    const tabFile = document.getElementById('serv-img-tab-file');
+    const sectionUrl = document.getElementById('serv-img-section-url');
+    const sectionFile = document.getElementById('serv-img-section-file');
+    if (tab === 'url') {
+      tabUrl?.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-on-surface');
+      tabUrl?.classList.remove('text-on-surface-variant');
+      tabFile?.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-on-surface');
+      tabFile?.classList.add('text-on-surface-variant');
+      sectionUrl?.classList.remove('hidden');
+      sectionFile?.classList.add('hidden');
+    } else {
+      tabFile?.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-on-surface');
+      tabFile?.classList.remove('text-on-surface-variant');
+      tabUrl?.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-on-surface');
+      tabUrl?.classList.add('text-on-surface-variant');
+      sectionFile?.classList.remove('hidden');
+      sectionUrl?.classList.add('hidden');
+    }
+  }
+
+  function handleServiceImageFileUpload(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.type.startsWith('image/')) {
+      showToastMsg('Please select a valid image file (JPG, PNG, WEBP).');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToastMsg('Image size exceeds 5MB limit.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      _selectedServiceImageData = evt.target.result;
+      const previewWrap = document.getElementById('aserv-image-preview-wrap');
+      const previewImg = document.getElementById('aserv-image-preview');
+      const previewLabel = document.getElementById('aserv-image-preview-label');
+      if (previewImg) previewImg.src = _selectedServiceImageData;
+      if (previewLabel) previewLabel.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+      if (previewWrap) previewWrap.classList.remove('hidden');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function updateServiceImagePreview(url) {
+    const previewWrap = document.getElementById('aserv-image-preview-wrap');
+    const previewImg = document.getElementById('aserv-image-preview');
+    const previewLabel = document.getElementById('aserv-image-preview-label');
+    if (url && url.trim()) {
+      _selectedServiceImageData = null;
+      if (previewImg) previewImg.src = url.trim();
+      if (previewLabel) previewLabel.textContent = 'External Image URL';
+      if (previewWrap) previewWrap.classList.remove('hidden');
+    } else if (!_selectedServiceImageData) {
+      if (previewWrap) previewWrap.classList.add('hidden');
+    }
+  }
+
+  function clearServiceImageSelection() {
+    _selectedServiceImageData = null;
+    const fileInput = document.getElementById('aserv-image-file');
+    const urlInput = document.getElementById('aserv-image');
+    const previewWrap = document.getElementById('aserv-image-preview-wrap');
+    if (fileInput) fileInput.value = '';
+    if (urlInput) urlInput.value = '';
+    if (previewWrap) previewWrap.classList.add('hidden');
+  }
+
+  window.switchServiceImageTab = switchServiceImageTab;
+  window.handleServiceImageFileUpload = handleServiceImageFileUpload;
+  window.updateServiceImagePreview = updateServiceImagePreview;
+  window.clearServiceImageSelection = clearServiceImageSelection;
+
+  function openCreateServiceModal(serviceId = null) {
+    const overlay = document.getElementById('service-create-modal-overlay');
+    const titleModal = document.getElementById('aserv-modal-title');
+    const submitBtn = document.getElementById('aserv-submit-btn');
+    const idInput = document.getElementById('aserv-id');
+    const titleInput = document.getElementById('aserv-title');
+    const providerInput = document.getElementById('aserv-provider');
+    const catInput = document.getElementById('aserv-category');
+    const kindInput = document.getElementById('aserv-kind');
+    const priceInput = document.getElementById('aserv-price');
+    const locInput = document.getElementById('aserv-location');
+    const imgInput = document.getElementById('aserv-image');
+    const descInput = document.getElementById('aserv-desc');
+
+    if (serviceId) {
+      const s = ALL_SERVICES.find(x => String(x.id) === String(serviceId));
+      if (s) {
+        if (titleModal) titleModal.textContent = 'Edit Service Listing';
+        if (submitBtn) submitBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">save</span> Update Service';
+        if (idInput) idInput.value = s.id;
+        if (titleInput) titleInput.value = s.title || '';
+        if (providerInput) providerInput.value = s.provider || '';
+        if (catInput) catInput.value = s.category || 'Barber & Grooming';
+        if (kindInput) kindInput.value = s.kind || s.category || '';
+        if (priceInput) priceInput.value = s.price || '';
+        if (locInput) locInput.value = s.location || '';
+        if (imgInput) imgInput.value = s.image || '';
+        _selectedServiceImageData = s.image || null;
+        const previewWrap = document.getElementById('aserv-image-preview-wrap');
+        const previewImg = document.getElementById('aserv-image-preview');
+        const previewLabel = document.getElementById('aserv-image-preview-label');
+        if (s.image && previewImg) {
+          previewImg.src = s.image;
+          if (previewLabel) previewLabel.textContent = 'Current Service Image';
+          if (previewWrap) previewWrap.classList.remove('hidden');
+        }
+        if (descInput) descInput.value = s.description || '';
+      }
+    } else {
+      if (titleModal) titleModal.textContent = 'List Your Service';
+      if (submitBtn) submitBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">save</span> List Service';
+      if (idInput) idInput.value = '';
+      if (titleInput) titleInput.value = '';
+      if (providerInput) providerInput.value = currentUser?.shopName || currentUser?.name || '';
+      if (catInput) catInput.value = 'Barber & Grooming';
+      if (kindInput) kindInput.value = '';
+      if (priceInput) priceInput.value = '';
+      if (locInput) locInput.value = 'Lekki, Lagos';
+      if (imgInput) imgInput.value = 'assets/images/cat-beauty.jpg';
+      if (descInput) descInput.value = '';
+      clearServiceImageSelection();
+      switchServiceImageTab('url');
+    }
+
+    if (overlay) {
+      overlay.classList.remove('pointer-events-none');
+      overlay.classList.add('open', 'opacity-100');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeCreateServiceModal() {
+    const overlay = document.getElementById('service-create-modal-overlay');
+    if (overlay) {
+      overlay.classList.remove('open', 'opacity-100');
+      overlay.classList.add('pointer-events-none');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function handleServiceCreateModalOverlayClick(e) {
+    if (e.target === document.getElementById('service-create-modal-overlay')) closeCreateServiceModal();
+  }
+
+  function saveNewService(e) {
+    if (e && e.preventDefault) e.preventDefault();
+    const serviceId = document.getElementById('aserv-id')?.value;
+    const title = document.getElementById('aserv-title')?.value.trim();
+    const provider = document.getElementById('aserv-provider')?.value.trim() || currentUser?.shopName || currentUser?.name || 'Service Pro';
+    const category = document.getElementById('aserv-category')?.value || 'Barber & Grooming';
+    const kind = document.getElementById('aserv-kind')?.value.trim() || category;
+    const price = Number(document.getElementById('aserv-price')?.value) || 5000;
+    const location = document.getElementById('aserv-location')?.value.trim() || 'Nigeria';
+    const imageUrl = document.getElementById('aserv-image')?.value.trim();
+    const image = _selectedServiceImageData || imageUrl || 'assets/images/cat-beauty.jpg';
+    const description = document.getElementById('aserv-desc')?.value.trim() || 'Professional on-demand service.';
+    const userEmail = (currentUser?.email || '').toLowerCase().trim();
+
+    if (!title || !provider) {
+      showToastMsg('Please fill in service title and provider name.');
+      return;
+    }
+
+    if (serviceId) {
+      // Edit existing service
+      const idx = ALL_SERVICES.findIndex(s => String(s.id) === String(serviceId));
+      if (idx !== -1) {
+        ALL_SERVICES[idx] = {
+          ...ALL_SERVICES[idx],
+          title,
+          provider,
+          category,
+          kind,
+          price,
+          location,
+          image,
+          description,
+          ownerEmail: ALL_SERVICES[idx].ownerEmail || userEmail,
+          vendorEmail: ALL_SERVICES[idx].vendorEmail || userEmail
+        };
+        showToastMsg('Service updated successfully!');
+      }
+    } else {
+      // Create new service
+      const newService = {
+        id: 'srv_' + Date.now(),
+        title,
+        provider,
+        category,
+        kind,
+        price,
+        rating: 5.0,
+        reviewsCount: 1,
+        location,
+        image,
+        description,
+        verified: true,
+        ownerEmail: userEmail,
+        vendorEmail: userEmail
+      };
+      ALL_SERVICES.unshift(newService);
+      showToastMsg('Service listed successfully!');
+    }
+
+    try {
+      localStorage.setItem('tshop_services', JSON.stringify(ALL_SERVICES));
+    } catch(e){}
+
+    closeCreateServiceModal();
+    renderServicesPage();
+    renderVendorServices();
+    switchVendorDashListingsTab('services');
+  }
+
+  // ── Vendor Dashboard Listings Tab Switcher ────────
+  function switchVendorDashListingsTab(tab) {
+    const prodBtn = document.getElementById('vdash-tab-products-btn');
+    const servBtn = document.getElementById('vdash-tab-services-btn');
+    const prodTable = document.getElementById('vdash-products-table-container');
+    const servTable = document.getElementById('vdash-services-table-container');
+    const subtitle = document.getElementById('vdash-listings-subtitle');
+
+    if (tab === 'products') {
+      prodBtn?.classList.add('text-secondary', 'border-secondary', 'font-bold');
+      prodBtn?.classList.remove('text-on-surface-variant', 'font-medium');
+      servBtn?.classList.remove('text-secondary', 'border-secondary', 'font-bold');
+      servBtn?.classList.add('text-on-surface-variant', 'font-medium');
+      prodTable?.classList.remove('hidden');
+      servTable?.classList.add('hidden');
+      if (subtitle) subtitle.textContent = 'Manage your stock, prices, and status';
+    } else {
+      servBtn?.classList.add('text-secondary', 'border-secondary', 'font-bold');
+      servBtn?.classList.remove('text-on-surface-variant', 'font-medium');
+      prodBtn?.classList.remove('text-secondary', 'border-secondary', 'font-bold');
+      prodBtn?.classList.add('text-on-surface-variant', 'font-medium');
+      servTable?.classList.remove('hidden');
+      prodTable?.classList.add('hidden');
+      if (subtitle) subtitle.textContent = 'Manage your rendered services, rates, and coverage';
+      renderVendorServices();
+    }
+  }
+  window.switchVendorDashListingsTab = switchVendorDashListingsTab;
+
+  function renderVendorServices() {
+    const tbody = document.getElementById('vendor-services-body');
+    if (!tbody) return;
+
+    const userEmail = (currentUser?.email || '').toLowerCase().trim();
+    const userName = (currentUser?.shopName || currentUser?.name || '').toLowerCase().trim();
+
+    const vendorServices = ALL_SERVICES.filter(s => {
+      // 1. Match by owner email
+      if (userEmail && s.ownerEmail && s.ownerEmail.toLowerCase().trim() === userEmail) return true;
+      if (userEmail && s.vendorEmail && s.vendorEmail.toLowerCase().trim() === userEmail) return true;
+      // 2. Match by provider name if current user has that shop/name
+      if (userName && s.provider && s.provider.toLowerCase().trim() === userName) return true;
+      if (userName && s.provider && (s.provider.toLowerCase().includes(userName) || userName.includes(s.provider.toLowerCase()))) return true;
+      // 3. If the user is currently the active logged-in vendor and created it
+      if (currentUser?.isVendor || currentUser?.role === 'vendor') {
+        if (!s.ownerEmail && userName && s.provider.toLowerCase().includes(userName)) return true;
+      }
+      return false;
+    });
+
+    // Update active listings stat
+    const statListings = document.getElementById('vendor-stat-listings');
+    if (statListings && currentUser) {
+      const vendorProducts = ALL_PRODUCTS.filter(p => {
+        if (!userName) return false;
+        const pVendor = (p.vendor || '').toLowerCase();
+        return pVendor === userName || pVendor.includes(userName) || userName.includes(pVendor);
+      });
+      statListings.textContent = vendorProducts.length + vendorServices.length;
+    }
+
+    if (vendorServices.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" class="py-8 text-center text-on-surface-variant">No services listed yet. Click "Add Service" to start offering your services.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = vendorServices.map(s => `
+      <tr class="hover:bg-surface-container/30 transition-colors">
+        <td class="px-3 py-2.5 font-label-md text-on-surface flex items-center gap-2">
+          <img src="${s.image || 'assets/images/cat-beauty.jpg'}" alt="${s.title}" class="w-8 h-8 rounded-lg object-cover bg-surface-container flex-shrink-0" onerror="this.src='assets/images/cat-beauty.jpg'">
+          <span class="truncate max-w-[140px] font-semibold">${s.title}</span>
+        </td>
+        <td class="px-3 py-2.5 text-on-surface-variant">${s.category || 'General'}</td>
+        <td class="px-3 py-2.5 font-medium text-secondary">${s.kind || s.category}</td>
+        <td class="px-3 py-2.5 font-bold text-on-surface">${formatNaira(s.price)}</td>
+        <td class="px-3 py-2.5 text-on-surface-variant">${s.location || 'Nigeria'}</td>
+        <td class="px-3 py-2.5 text-right">
+          <div class="flex items-center justify-end gap-1">
+            <button onclick="openCreateServiceModal('${s.id}')" class="p-1 text-on-surface-variant hover:text-secondary rounded transition-colors" title="Edit Service">
+              <span class="material-symbols-outlined text-[16px]">edit</span>
+            </button>
+            <button onclick="deleteServiceListing('${s.id}')" class="p-1 text-on-surface-variant hover:text-error rounded transition-colors" title="Delete Service">
+              <span class="material-symbols-outlined text-[16px]">delete</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  }
+  window.renderVendorServices = renderVendorServices;
+
+  function deleteServiceListing(serviceId) {
+    if (!confirm('Are you sure you want to delete this service listing?')) return;
+    ALL_SERVICES = ALL_SERVICES.filter(s => String(s.id) !== String(serviceId));
+    try {
+      localStorage.setItem('tshop_services', JSON.stringify(ALL_SERVICES));
+    } catch(e) {}
+    renderVendorServices();
+    renderServicesPage();
+    showToastMsg('Service deleted.');
+  }
+  window.deleteServiceListing = deleteServiceListing;
+
+
+  window.initServices = initServices;
+  window.renderServicesPage = renderServicesPage;
+  window.filterServices = filterServices;
+  window.handleServicesSearch = handleServicesSearch;
+  window.openServiceModal = openServiceModal;
+  window.closeServiceModal = closeServiceModal;
+  window.handleServiceModalOverlayClick = handleServiceModalOverlayClick;
+  window.chatWithActiveServicePro = chatWithActiveServicePro;
+  window.quickChatWithService = quickChatWithService;
+  window.openCreateServiceModal = openCreateServiceModal;
+  window.closeCreateServiceModal = closeCreateServiceModal;
+  window.handleServiceCreateModalOverlayClick = handleServiceCreateModalOverlayClick;
+  window.saveNewService = saveNewService;
+
   function initApp() {
     try { applyAuthState(); } catch(e) { console.error('applyAuthState error:', e); }
     try { syncAllWishlistButtons(); } catch(e) {}
     try { loadStorefrontProducts(); } catch(e) {}
     try { loadAdminData(); } catch(e) {}
     try { wireOrderRows(); } catch(e) {}
+    try { initChatSystem(); } catch(e) { console.error("Chat init error:", e); }
+    try { initServices(); } catch(e) { console.error("Services init error:", e); }
   }
 
   if (document.readyState === 'loading') {
