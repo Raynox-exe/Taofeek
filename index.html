@@ -966,8 +966,8 @@ PAGE CONTAINER
               <span class="material-symbols-outlined text-[16px]">search</span>
               Browse Specialists
             </button>
-            <button onclick="openCreateServiceModal()" 
-              class="px-5 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-on-surface font-label-md text-xs shadow-sm hover:border-secondary hover:text-secondary hover:-translate-y-0.5 transition-all flex items-center gap-1.5 active:translate-y-0">
+            <button id="services-hero-list-btn" onclick="openCreateServiceModal()" 
+              class="vendor-only-action hidden px-5 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/60 text-on-surface font-label-md text-xs shadow-sm hover:border-secondary hover:text-secondary hover:-translate-y-0.5 transition-all flex items-center gap-1.5 active:translate-y-0">
               <span class="material-symbols-outlined text-[16px]">add_business</span>
               List Your Service as a Pro
             </button>
@@ -1010,7 +1010,7 @@ PAGE CONTAINER
             </h2>
             <p class="font-body-md text-on-surface-variant text-sm mt-0.5">Hire vetted professionals directly or message them instantly for inquiries and quotes.</p>
           </div>
-          <button onclick="openCreateServiceModal()" class="self-start sm:self-auto px-4 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow-sm hover:shadow hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
+          <button id="services-grid-list-btn" onclick="openCreateServiceModal()" class="vendor-only-action hidden self-start sm:self-auto px-4 py-2.5 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow-sm hover:shadow hover:-translate-y-0.5 transition-all flex items-center gap-1.5">
             <span class="material-symbols-outlined text-[16px]">add</span>
             List a Service
           </button>
@@ -7532,14 +7532,17 @@ ADMIN ADD / EDIT PRODUCT MODAL
     }
 
     if (list.length === 0) {
+      const isVendor = currentUser && (currentUser.isVendor === true || currentUser.role === 'vendor');
       grid.innerHTML = `
-        <div class="col-span-full py-16 text-center text-on-surface-variant flex flex-col items-center gap-3">
-          <span class="material-symbols-outlined text-4xl text-outline-variant">handyman</span>
-          <p class="font-headline-md text-base font-semibold">No service providers found</p>
-          <p class="font-body-md text-xs max-w-sm">Try selecting another category or click "List a Service" to add your service.</p>
-          <button onclick="openCreateServiceModal()" class="mt-2 px-4 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow">
-            List Your Service Now
-          </button>
+        <div class="col-span-full py-16 flex flex-col items-center justify-center text-center">
+          <span class="material-symbols-outlined text-outline-variant text-[48px] mb-2">handyman</span>
+          <h3 class="font-title-lg text-base text-on-surface font-semibold">No service providers found</h3>
+          <p class="font-body-md text-xs text-on-surface-variant max-w-sm mt-1 mb-4">${isVendor ? 'No services in this category yet. Click "List a Service" to add yours.' : 'No verified service providers available in this category yet.'}</p>
+          ${isVendor ? `
+            <button onclick="openCreateServiceModal()" class="mt-2 px-4 py-2 bg-secondary text-on-secondary rounded-xl font-label-md text-xs shadow hover:shadow-md transition-all">
+              List Your Service Now
+            </button>
+          ` : ''}
         </div>`;
       return;
     }
@@ -7779,6 +7782,16 @@ ADMIN ADD / EDIT PRODUCT MODAL
   window.clearServiceImageSelection = clearServiceImageSelection;
 
   function openCreateServiceModal(serviceId = null) {
+    if (!currentUser) {
+      showToastMsg('Please sign in as a vendor to list a service.');
+      if (typeof openAuthModal === 'function') openAuthModal('login');
+      return;
+    }
+    const isVend = currentUser.isVendor === true || currentUser.role === 'vendor';
+    if (!isVend) {
+      showToastMsg('Only verified vendors can list a service. Apply in your account dashboard.');
+      return;
+    }
     const overlay = document.getElementById('service-create-modal-overlay');
     const titleModal = document.getElementById('aserv-modal-title');
     const submitBtn = document.getElementById('aserv-submit-btn');
